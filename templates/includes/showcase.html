@@ -1,7 +1,6 @@
-<section class=" bg-gray-300 text-light text-center text-sm-start">
-    <div class="container flex flex-col">
-      <div class="flex flex-col align-items-center gap-3 justify-content-between md:flex-row">
-        <div class="flex flex-col px-5">
+
+      <div class=" grid grid-cols-1 gap-5 lg:grid-cols-2 max-w-screen-2xl mx-auto mt-4">
+        <div class="text-center p-3">
           <h1 class="mt-3 text-2xl font-semibold text-blue-700">Super <span class=" text-red-700"> Camper</span></h1>
           <p class="py-3">
             All the best camping plots you have found all around Europe. Was the
@@ -9,15 +8,20 @@
             have a good time? Let us know! How far away was the electric hook up
             point?
           </p>
-          <p class="">
+          <p class="mb-6">
             Are there shops nearby or other facilities like restaurants and
             children's playgrounds?
           </p>
+          
+          {% if user.is_authenticated %}
+          {% else %}
+          <a class=" bg-blue-600 text-white px-4 py-2 " href="#">Let's Get Started</a>
+          
+          {% endif %}
+            
   
         </div>
-        <img class="  max-w-xl"
+        <img class=""
           src="https://res.cloudinary.com/df4x68pyj/image/upload/v1700742003/samples/landscapes/nature-mountains.jpg"
-          alt="" />
+          alt="landscape picture" />
       </div>
-    </div>
-  </section>

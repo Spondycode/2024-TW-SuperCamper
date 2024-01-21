@@ -40,15 +40,16 @@
                     <a href="#"
                     class=" text-center block py-2 pl-3 pr-4 text purple-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent ">Profile</a>
                 </li>
+                {% else %}
+                <li>
+                    <a href="#"
+                    class=" text-center block py-2 pl-3 pr-4 text-purple-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent ">Login</a>
+                </li>
+                <li>
+                    <a href="#"
+                    class=" text-center block py-2 pl-3 pr-4 text-purple-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent ">Register</a>
+                </li>
                 {% endif %}
-                <li>
-                    <a href="#"
-                        class=" text-center block py-2 pl-3 pr-4 text-purple-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent ">Login</a>
-                </li>
-                <li>
-                    <a href="#"
-                        class=" text-center block py-2 pl-3 pr-4 text-purple-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent ">Register</a>
-                </li>
                 
                 {% if user.is_superuser %}
                     

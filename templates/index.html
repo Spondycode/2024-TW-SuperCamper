@@ -6,7 +6,11 @@
 
     <div class=" text-2xl mx-auto ">
         
+        {% if not user.is_authenticated %}
         {% include 'includes/showcase.html' %}
+        
+        {% endif %}
+            
         <p class=" mt-4">Here is some text</p>
     </div>
 
