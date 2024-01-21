@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .card {
-  @apply bg-white rounded-lg overflow-hidden shadow-lg relative;
+  @apply bg-white rounded-lg  shadow-lg;
 }
 
 .badge {
@@ -11,5 +11,5 @@
 }
 
 .btn {
-  @apply text-white px-3 py-2 rounded-lg uppercase font-semibold text-sm cursor-pointer, tracking-wider;
+  @apply px-3 py-2 rounded-lg uppercase font-semibold text-sm cursor-pointer tracking-wider;
 }

@@ -1,0 +1,25 @@
+<div class="card p-2 rounded-4 bg-slate-100 shadow-lg">
+    <h3 class=" text-2xl text-center my-2">Search Titles</h3>
+    <p class="pb-3">Search for a plot by title - The name campers have given to the plot that was just right for their stay.</p>
+
+<!-- in the action below add this{ url 'search_plots' } -->
+    <div class="">
+        <form class="flex flex-col bg-orange-100 rounded-md" method="POST" action="" type="search" placeholder="Search">
+            {% csrf_token %}
+            <input class="form-control " type="search" placeholder="Search" aria-label="Search" name="search">
+            <button class="btn border-2 border-green-700 hover:bg-green-700 hover:text-white mt-3" type="submit">Search</button>
+        </form>
+    </div>
+
+    <h3 class="text-2xl text-center my-4">Search by Country</h3>
+    <p class="pb-3">Heading off to France, Spain or Poland for a couple of days camping? Which plots have other campers recommended?</p>
+
+<!-- In the action below add this { url 'search_countries' } - add back the %% -->
+    <div class=" ">
+        <form class="flex flex-col bg-orange-100 rounded-md" method="POST" action="" type="search" placeholder="Search">
+            {% csrf_token %}
+            <input class="form-control " type="search" placeholder="Search" aria-label="Search" name="search">
+            <button class="btn border-2 border-green-700 hover:bg-green-700 hover:text-white mt-3" type="submit">Search</button>
+        </form>
+    </div>
+</div>

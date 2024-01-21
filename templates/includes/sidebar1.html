@@ -1,0 +1,30 @@
+{% load static %}
+
+<div class="container p-3">
+
+    <div class=" bg-sky-400 mt-4 px-5 rounded-lg mx-1">
+        <h3 class="text-center text-white mb-4 pt-2 text-2xl">Super Campista !</h3>
+        <h4 class="text-center pb-4 font-semibold text-lg">Super Camper is a community of campers who share their camping plot information with other campers.
+        </h4>
+    </div>
+    <div class=" my-4">
+        <div class="flex flex-col items-center gap-4">
+
+            <div class="p-2"> {% include 'includes/search.html' %}</div>
+
+            <div class="p-2"> Categories</div>
+
+            <div class="p-2">Aside 1 </div>
+
+            <div class="p-2">plot of the week</div>
+
+            <div class="p-2">Aside 2</div>
+
+            {% if profile.level == 'Banned' %}
+                <div class="p-2">Please enjoy</div>
+                {% else %}
+                <div class="p-2"> </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
