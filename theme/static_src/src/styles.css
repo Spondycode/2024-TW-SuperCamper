@@ -9,3 +9,7 @@
 .badge {
   @apply absolute top-0 right-0 bg-purple-500 uppercase font-semibold text-white p-2 py-1 ;
 }
+
+.btn {
+  @apply text-white px-3 py-2 rounded-lg uppercase font-semibold text-sm cursor-pointer, tracking-wider;
+}
