@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<p class="py-4 text-center bg-yellow-200 lg:hidden">Scroll down for help with filling the form</p>
+<p class="py-4 text-center lg:hidden dark:bg-yellow-600 dark:text-white">Scroll down for help with filling the form</p>
 <div class="flex flex-col gap-2 mx-5 mt-3">
 
     <div class="flex flex-col lg:flex-row">
         <div class="pb-4 ">
                 <div class="row row-cols-md">
-                    <div class="mb-4 ml-3 shadow card px-md-5 bg-sky-100">
+                    <div class="mb-4 ml-3 shadow card px-md-5 bg-sky-200 dark:bg-sky-500">
                         <h3 class="text-2xl font-semibold text-center">Add Your Plot</h3>
 
                         {% if submitted %}
@@ -28,9 +28,9 @@
         </div>
 
 
-        <div class="px-6">
-            <div class="row">
-                    <h4 class="p-4 text-2xl font-semibold text-center ">How to Fill in the Form</h4>
+        <div class="p-6">
+            <div class="flex flex-col gap-2 dark:text-white">
+                    <h4 class="pb-2 text-2xl font-semibold text-center dark:text-yellow-50">How to Fill in the Form</h4>
                     <p><strong>Title: </strong>Whatever you want to call the plot</p>
                     <p><strong>Description: </strong>Add the details of what it is you like about the plot. Such as if
                         it is sunny or with shade. Is it close to the facilities, like the showers, electric hookup and water?</p>
@@ -42,8 +42,11 @@
                         of the earth is divided into 3m squares. You could be in the middle of a desert or in forest,
                         well away from any civilisation. Still you can send an address using just 3 words.</p>
                     <p>Add the complete url including https://</p>
-<h4 class="p-2 text-center text-white bg-danger">IMPORTANT</h4>
-<p>Especially for the non campsite spots. If you don't add the What3Words address, no one else will be able to find it and you might not find it again either.</p>
+<div class="p-2 text-center text-white bg-red-700 rounded-lg">IMPORTANT
+
+    
+    <p>Especially for the non campsite spots. If you don't add the What3Words address, no one else will be able to find it and you might not find it again either.</p>
+</div>
 
                     <div class="my-5 text-center"><a class="text-white bg-blue-700 btn"
                             href="https://what3words.com/products/what3words-app">Get the App

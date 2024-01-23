@@ -60,7 +60,7 @@ def edit_plot_view(request, pk):
             plot.owner = request.user   # get the logged in user
             form.save()
             messages.success(request, "Plot updated successfully")
-            return redirect("profile")
+            return redirect("home")
     return render(request, "a_plots/edit_plot.html", context)
 
 

@@ -3,7 +3,7 @@
     
     {% for plot in plots %}
     {% if plot.approved %}
-    <div class="w-full p-4 mx-auto bg-gray-200 card">
+    <div class="w-full p-4 mx-auto bg-gray-200 card dark:bg-gray-400">
         <h3 class="text-2xl font-semibold text-center text-blue-900 "> {{ plot.title }}</h3>
         {% if plot.categories == 'Campsite' %}
         <a class="block px-3 mt-3 text-center text-white bg-blue-600 btn hover:bg-blue-500 hover:shadow-md" href="">Campsite</a>
@@ -37,7 +37,7 @@
 
             {% if plot.plot_image %}
 
-            <a href="{% url 'show-plot' plot.id %}"><img class="w-100" src="{{ plot.plot_image.url }}" alt="plot image"></a>
+            <a href="{% url 'show-plot' plot.id %}"><img class="w-full" src="{{ plot.plot_image.url }}" alt="plot image"></a>
             {% else %}
             <a href="{% url 'show-plot' plot.id %}"><img class="w-100" src="{% static 'images/default.jpg' %}" alt="Default image"></a>
             {% endif %}
@@ -45,10 +45,10 @@
         {% if profile.level == 'Banned' %}
         <p>Please enjoy</p>
         {% else %}
-        <a class="block mt-4 text-center btn bg-sky-400 hover:bg-sky-300 hover:shadow-md" href="{% url 'show-plot' plot.id %}">
+        <a class="block mt-4 text-center btn bg-sky-400 hover:bg-sky-300 hover:shadow-md dark:bg-sky-700 dark:text-gray-200" href="{% url 'show-plot' plot.id %}">
             View Plot - Comments - replies</a>
         {% endif %}
-        <hr>
+        <hr class="my-3">
 
         <!-- Next bit -->
         <div class="flex flex-col justify-between mx-3">
