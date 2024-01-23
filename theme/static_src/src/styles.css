@@ -3,13 +3,68 @@
 @tailwind utilities;
 
 .card {
-  @apply bg-white rounded-lg  shadow-lg;
+  @apply p-4 rounded-lg shadow-lg ;
 }
 
 .badge {
-  @apply absolute top-0 right-0 bg-purple-500 uppercase font-semibold text-white p-2 py-1 ;
+  @apply absolute top-0 right-0 p-2 py-1 font-semibold text-white uppercase bg-purple-500 ;
 }
 
 .btn {
-  @apply px-3 py-2 rounded-lg uppercase font-semibold text-sm cursor-pointer tracking-wider;
+  @apply px-3 py-2 text-sm font-semibold tracking-wider uppercase rounded-lg cursor-pointer;
+}
+
+
+
+
+form p {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+label, input {
+display: inline-block;
+}
+form p label {
+  width: 7rem;
+  }
+label {
+  margin: 6px 0 3px;
+}
+input, textarea {
+  width: 100%;
+  border-width: 1px solid;
+  border-radius: 0.5rem;
+  border-color: #ffffff;
+}
+input[type="file"], select {
+  background-color: white;
+  padding-left: 3;
+  border-width: 1px solid;
+  border-radius: 0.5rem;
+  border-color: #feffff;
+}
+label[for="id_remember"] {
+  width: auto;
+  margin-right: 0.5rem;
+}
+input, text {
+  width: 100%;
+  border-width: 0px;
+  border-radius: 0.5rem;
+  border-color: #ffffff;
+}
+
+input[type="text"] {
+  width: 100%;
+  border-width: 0px;
+  border-radius: 0.5rem;
+  border-color: #ffffff;
+}
+
+input[type="number"] {
+  width: 100%;
+  border-width: 0px;
+  border-radius: 0.5rem;
+  border-color: #ffffff;
 }

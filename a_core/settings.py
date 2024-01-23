@@ -5,6 +5,7 @@ Django settings for a_core project.
 from pathlib import Path
 import environ
 
+
 env = environ.Env(
 # set casting, default value
 DEBUG=(bool, False))
@@ -128,8 +129,9 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-MEDIA_URL = '/media/'
+MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

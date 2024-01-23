@@ -1,0 +1,84 @@
+{% load static %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-8 ">
+            <div class="container col-lg-10">
+                <div class="row row-cols-md">
+                    {% for plot in plots %}
+                    <div class="col-md-6">
+                        <div class=" card shadow m-2 p-2">
+                            <div class="row">
+                                <h3 class=" text-center"><i class="bi bi-emoji-sunglasses text-primary"></i>
+                                    {{ plot.title }}</h3>
+                                    
+                            </div>
+
+                            {% if plot.owner %}
+                            <h3 class="btn btn-block btn-outline-info my-2 text-dark ">
+                           User Name - {{ plot.owner }}</h3>
+                            {% else %}
+                            <h3 class="btn btn-block btn-outline-info my-2 text-dark ">
+                                No owner</h3>
+
+                            {% endif %}
+
+                   <!-- Image for the plot -->
+                   {% if plot.plot_image %}
+
+                   <a href="{% url 'show_plot' plot.id %}"><img class="w-100" src="{{ plot.plot_image.url }}" alt=""></a>
+                   {% else %}
+                   <a href="{% url 'show_plot' plot.id %}"><img class="w-100" src="{% static 'images/default.jpg' %}" alt="Default image"></a>
+                   {% endif %}
+               </figure>
+
+                            <p class="text-truncate"><strong>Description:</strong> {{ plot.description }}</p>
+                            <ul>
+                                <li><strong>Campsite:</strong> {{ plot.campsite }}</li>
+                                <li><strong>Country:</strong> {{ plot.countries }}</li>
+                            </ul>
+
+                            <a class="btn btn-info btn-sm col" href="{% url 'show_plot' plot.id %}">
+                                View Plot</a>
+                            <hr>
+                            <a href="">Report</a>
+
+
+
+                        
+                            <div class="d-flex justify-content-between mx-3">
+                                <div>
+                                    {% if plot.comments.count %}
+                                    <h5 class="mt-2 text-primary">
+                                        <i class="bi bi-megaphone-fill text-primary "></i>
+                                        Comments: <span class="">{{ plot.comments.count }}</span>
+                                    </h5>
+                                    {% else %}
+                                    <p class="mt-2">View Plot to Add a Comment..</p>
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    <h5 class="mt-2 text-danger">
+                                        <i class="bi bi-balloon-heart-fill"></i> Likes: {{ plot.likes.count }}
+                                    </h5>
+                                </div>
+                            </div>
+                            <p>
+                                {% if user.is_authenticated and user != plot.author %}
+                            <div class="d-flex flex-row-reverse mx-4"><a class="btn btn-sm btn-secondary"
+                                    href="{% url 'like_plot' plot.id %}">Add a Like</a></div>
+                            </p>
+                            {% endif %}
+
+                        </div>
+
+                        
+                    </div>
+                    {% endfor %}
+
+
+
+                    
+                </div>
+
+            </div>
+        </div>

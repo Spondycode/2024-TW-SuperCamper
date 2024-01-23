@@ -1,7 +1,7 @@
 {% load static %}
-<nav class=" bg-yellow-300 border-gray-200 py-2.5 dark:bg-purple-900">
+<nav class=" bg-yellow-400 border-gray-200 py-2.5 dark:bg-purple-900">
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
-        <a href="#" class="flex items-center">
+        <a href="{% url 'home' %}" class="flex items-center">
             <img src="{% static 'images/tent-logo.png' %}" class="h-10 mr-5 sm:h-9" alt="Super Camper Logo">
             <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Super Camper</span>
         </a>
@@ -33,7 +33,7 @@
                     
                 
                 <li>
-                    <a href="#"
+                    <a href="{% url 'add-plot' %}"
                     class=" text-center block py-2 pl-3 pr-4 text purple-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent ">Add Plot</a>
                 </li>
                 <li>

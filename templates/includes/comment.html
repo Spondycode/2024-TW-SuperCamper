@@ -1,0 +1,57 @@
+{% load static %}
+<comment class="">
+
+    {% if comment.author%}
+    <div class="flex flex-row justify-around mx-6 mt-6 rounded-lg bg-slate-400">
+        <p class="p-2 font-semibold text-black ">Comment by:{{ comment.author.username}}<p>
+        <p class="p-2 font-semibold text-black ">Date : {{ comment.created }}</p>
+            {% else %}
+        <p>No Author</p>
+        {% endif %}
+    </div>
+
+
+    <div class="p-10 m-4 border-2 border-blue-600 rounded-xl">
+        
+        <h6 class="text-lg"> {{ comment.body }}</h6>
+
+        <div>
+                <div class="mb-4 text-end">
+
+                    {% include 'snippets/likes_comment.html' %}
+                    <!-- Only allow delete by author -->
+                    {% if user.is_authenticated and comment.author == user %}
+                    <a class="border-2 border-red-700 shadow btn hover:bg-red-700 hover:text-white "
+                        href="{% url 'delete-comment' comment.id %}">Delete
+                        Comment</a>
+                    {% endif %}
+                </div>
+            
+            {% if comment.replies.count and user.is_authenticated%}
+            <h5 class="py-2 m-3 text-xl font-medium text-center text-blue-800 bg-blue-100 rounded">Replies:
+                {{ comment.replies.count }}
+            </h5>
+            {% endif %}
+
+            <div class="mx-3">
+                {% for reply in comment.replies.all %}
+                {% include 'a_plots/reply.html' %}
+                {% endfor %}
+            </div>
+        </div>
+        
+        <!-- Add a Reply -->
+        {% if user.is_authenticated %}
+        <h3 class="ml-6 font-semibold">Reply to the Comment Above</h3>
+        <div class="mx-6 bg-teal-600 card">
+            <form class="m-2" method="POST" action="{% url 'reply-sent' comment.id %}">
+                {% csrf_token %}
+                {{ replyform.as_p }}
+                <button class="block mb-3 shadow btn bg-sky-500 hover:bg-sky-700">Submit</button>
+            </form>
+        </div>
+        {% endif %}
+
+
+    </div>
+</comment>

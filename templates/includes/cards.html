@@ -1,28 +1,28 @@
 {% load static %}
-<div class="container mt-3 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+<div class="grid grid-cols-1 gap-6 mt-3 lg:grid-cols-2 xl:grid-cols-3">
     
     {% for plot in plots %}
     {% if plot.approved %}
-    <div class="card mx-auto  p-4 w-full">
-        <h3 class="text-center font-semibold text-2xl text-blue-900 "> {{ plot.title }}</h3>
+    <div class="w-full p-4 mx-auto bg-gray-200 card">
+        <h3 class="text-2xl font-semibold text-center text-blue-900 "> {{ plot.title }}</h3>
         {% if plot.categories == 'Campsite' %}
-        <a class="btn block mt-3 px-3 bg-blue-600 text-white text-center hover:bg-blue-500 hover:shadow-md" href="">Campsite</a>
+        <a class="block px-3 mt-3 text-center text-white bg-blue-600 btn hover:bg-blue-500 hover:shadow-md" href="">Campsite</a>
         {% endif %}
 
         {% if plot.categories == 'Official' %}
-        <a class="btn mt-3 px-3  bg-yellow-500 text-white text-center block hover:bg-yellow-400 hover:shadow-md" href="">Official</a>
+        <a class="block px-3 mt-3 text-center text-white bg-yellow-500 btn hover:bg-yellow-400 hover:shadow-md" href="">Official</a>
         {% endif %}
 
         {% if plot.categories == 'Wild' %}
-        <a class="btn mt-3 px-3 bg-green-700 text-white text-center block hover:bg-green-600 hover:shadow-md" href="">Wild</a>
+        <a class="block px-3 mt-3 text-center text-white bg-green-700 btn hover:bg-green-600 hover:shadow-md" href="">Wild</a>
         {% endif %}
 
 
         {% if plot.owner %}
-        <p class="btn border-2 border-sky-400 my-2 text-blue-900 text-center hover:bg-blue-300 ">
+        <p class="my-2 text-center text-blue-900 border-2 btn border-sky-400 hover:bg-blue-300 ">
             User Name - {{ plot.owner }}</p>
         {% else %}
-        <h3 class="btn block border-2 border-sky-400 my-2 text-blue-900 ">
+        <h3 class="block my-2 text-blue-900 border-2 btn border-sky-400 ">
             No owner</h3>
         </a>
         {% endif %}
@@ -37,42 +37,42 @@
 
             {% if plot.plot_image %}
 
-            <a href=""><img class="w-100" src="{{ plot.plot_image.url }}" alt="plot image"></a>
+            <a href="{% url 'show-plot' plot.id %}"><img class="w-100" src="{{ plot.plot_image.url }}" alt="plot image"></a>
             {% else %}
-            <a href=""><img class="w-100" src="{% static 'images/default.jpg' %}" alt="Default image"></a>
+            <a href="{% url 'show-plot' plot.id %}"><img class="w-100" src="{% static 'images/default.jpg' %}" alt="Default image"></a>
             {% endif %}
         </figure>
         {% if profile.level == 'Banned' %}
         <p>Please enjoy</p>
         {% else %}
-        <a class="btn block bg-sky-400 mt-4 text-center hover:bg-sky-300 hover:shadow-md" href="">
+        <a class="block mt-4 text-center btn bg-sky-400 hover:bg-sky-300 hover:shadow-md" href="{% url 'show-plot' plot.id %}">
             View Plot - Comments - replies</a>
         {% endif %}
         <hr>
 
         <!-- Next bit -->
-        <div class="flex flex-col justify-content-between mx-3">
+        <div class="flex flex-col justify-between mx-3">
             <div>
                 {% if plot.comments.count %}
-                <h5 class="mt-2 text-blue-700">
-                    Megaphone Here
+                <h5 class="mt-2 text-xl text-blue-700">
+                    📣 
                     Comments: <span class="">{{ plot.comments.count }}</span>
                 </h5>
                 {% endif %} 
             </div>
             <div>
-                <h5 class="mt-2 text-red-700">
-                    Balloon Here Likes: {{ plot.likes.count }}
+                <h5 class="mt-2 text-xl text-red-700 ">
+                    🎈 Likes: {{ plot.likes.count }}
                 </h5>
             </div>
         </div>
             {% if user.is_authenticated and user != plot.owner %}
         <div class="flex justify-between m-4 ">
-            <a class="btn border-2 bg-red-400 border-red-600 hover:bg-red-500 hover:text-white hover:shadow-md" href="">Report</a>
+            <a class="border-2 border-red-600 btn hover:bg-red-500 hover:text-white hover:shadow-md" href="{% url 'report-plot' plot.id %}">Report</a>
             
             {% if user in plot.likes.all %}
                 {% else %}
-            <a class="btn bg-yellow-500 hover:bg-yellow-400 hover:shadow-md" href="">Add a Like</a>
+            <a class="bg-yellow-500 btn hover:bg-yellow-400 hover:shadow-md" href="">Add a Like</a>
             {% endif %}
                 
         </div>

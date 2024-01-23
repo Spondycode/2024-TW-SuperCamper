@@ -1,0 +1,30 @@
+<reply class="py-3 border-t ">
+    <div>
+
+        {% if reply.author %}
+
+        <div class="mt-6 bg-slate-300">
+            <div class="flex justify-between">
+                <p class="p-2 text-black ">Reply by: {{ reply.author.username }}</p>
+                <p class="p-2 text-black ">{{ reply.created }}</p>
+            </div>
+        </div>
+        {% else %}
+        <span>No Author</span>
+        {% endif %}
+
+
+        <div>
+            <p class="mb-3 text-lg">{{ reply.body }}</p>
+        </div>
+
+        {% if user.is_authenticated and reply.author == user%}
+
+        <div class="flex flex-row-reverse">
+            <a class="mb-5 border-2 border-red-600 btn hover:bg-red-700 text-end hover:text-white" href="{% url 'delete-reply' reply.id %}">Delete Reply</a>
+        </div>
+        {% endif %}
+
+
+    </div>
+</reply>
