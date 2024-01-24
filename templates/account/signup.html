@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load allauth i18n %}
+{% block head_title %}
+    {% trans "Signup" %}
+{% endblock head_title %}
+{% block content %}
+
+    <div class="max-w-xl m-4 mx-auto card bg-sky-200">
+        <h1 class="mb-4 text-2xl font-semibold text-center">Sign up</h1>
+        <p class="py-4">
+            Already have an account? Then please <a class="p-1 text-white bg-blue-400 rounded-md hover:bg-blue-500" href="{{ login_url }}">sign in</a>.
+        </p>
+        {% url 'account_signup' as action_url %}
+        {% element form form=form method="post" action=action_url tags="entrance,signup" %}
+            {% slot body %}
+                {% csrf_token %}
+                {% element fields form=form unlabeled=True %}
+                {% endelement %}
+                {% if redirect_field_value %}
+                    <input type="hidden"
+                           name="{{ redirect_field_name }}"
+                           value="{{ redirect_field_value }}" />
+                {% endif %}
+            {% endslot %}
+            {% slot actions %}
+                {% element button tags="prominent,signup" type="submit" %}
+                <p class="text-center text-white bg-blue-600 shadow-lg btn hover:bg-blue-700"> {% trans "Sign In" %} </p>
+                {% endelement %}
+            {% endslot %}
+        {% endelement %}
+        {% if SOCIALACCOUNT_ENABLED %}
+            {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
+        {% endif %}
+    </div>
+
+{% endblock content %}

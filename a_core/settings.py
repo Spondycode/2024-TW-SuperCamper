@@ -32,11 +32,17 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "a_plot.apps.APlotConfig",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "django.contrib.sites",
     
     "tailwind",
     "theme",
     "django_browser_reload",
 ]
+
+SITE_ID = 1
 
 TAILWIND_APP_NAME = 'theme'
 
@@ -56,6 +62,8 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django_browser_reload.middleware.BrowserReloadMiddleware",
+    
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "a_core.urls"
@@ -75,6 +83,14 @@ TEMPLATES = [
         },
     },
 ]
+
+#Django Allauth
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+
 
 WSGI_APPLICATION = "a_core.wsgi.application"
 
@@ -137,3 +153,5 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOGIN_REDIRECT_URL = 'home'

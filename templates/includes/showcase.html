@@ -1,7 +1,7 @@
 
-      <div class=" grid grid-cols-1 gap-5 lg:grid-cols-2 max-w-screen-2xl mx-auto mt-4">
-        <div class="text-center p-3">
-          <h1 class="mt-3 text-2xl font-semibold text-blue-700">Super <span class=" text-red-700"> Camper</span></h1>
+      <div class="grid grid-cols-1 gap-5 mx-auto mt-4 lg:grid-cols-2 max-w-screen-2xl">
+        <div class="p-3 text-center">
+          <h1 class="mt-3 text-2xl font-semibold text-blue-700">Super <span class="text-red-700 "> Camper</span></h1>
           <p class="py-3">
             All the best camping plots you have found all around Europe. Was the
             plot easy to get into and out of? Was it a nice place to stay? Did you
@@ -13,10 +13,8 @@
             children's playgrounds?
           </p>
           
-          {% if user.is_authenticated %}
-          {% else %}
-          <a class=" bg-blue-600 text-white px-4 py-2 btn " href="#">Let's Get Started</a>
-          
+          {% if not user.is_authenticated %}
+          <a class="px-4 py-2 text-white bg-blue-600 btn" href="{% url 'account_signup' %}">Let's Get Started</a>
           {% endif %}
             
   

@@ -3,7 +3,7 @@
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
         <a href="{% url 'home' %}" class="flex items-center">
             <img src="{% static 'images/tent-logo.png' %}" class="h-10 mr-5 sm:h-9" alt="Super Camper Logo">
-            <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Super Camper</span>
+            <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Super Camper - {{ user.username }}</span>
         </a>
         <div class="flex items-center lg:order-2">
             <div class="hidden mt-2 mr-4 sm-inline-block">
@@ -35,20 +35,23 @@
                     class="block py-2 pl-3 pr-4 text-center text-purple-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Add Plot</a>
                 </li>
                 <li>
+                    <!-- profile -->
                     <a href="#"
                     class="block py-2 pl-3 pr-4 text-center text-purple-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Profile</a>
                 </li>
                 <li>
-                    <a href="#"
+                    <!-- Logout -->
+                    <a href="{% url 'account_logout' %}"
                     class="block py-2 pl-3 pr-4 text-center text-purple-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Logout</a>
                 </li>
                 {% else %}
                 <li>
-                    <a href="#"
+                    <!-- Login -->
+                    <a href="{% url 'account_login' %}"
                     class="block py-2 pl-3 pr-4 text-center text-purple-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Login</a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="{% url 'account_signup' %}"
                     class="block py-2 pl-3 pr-4 text-center text-purple-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Register</a>
                 </li>
                 {% endif %}
