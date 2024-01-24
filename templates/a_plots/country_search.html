@@ -3,86 +3,27 @@
 {% block content %}
 
 {% if search %}
-<h1 class="text-center">You Searched for {{ search }}</h1>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-8 ">
-            <div class="container col-lg-10">
-                <div class="row row-cols-md">
-                    {% for plot in plots %}
-                    <div class="col-md-6">
-                        <div class=" card shadow m-2 p-2">
-                            <div class="row">
-                                <h3 class=" text-center"><i class="bi bi-emoji-sunglasses text-primary"></i>
-                                    {{ plot.title }}</h3>
-                                    
-                            </div>
 
-                            {% if plot.owner %}
-                            <h3 class="btn btn-block btn-outline-info my-2 text-dark ">
-                           User Name - {{ plot.owner }}</h3>
-                            {% else %}
-                            <h3 class="btn btn-block btn-outline-info my-2 text-dark ">
-                                No owner</h3>
-
-                            {% endif %}
-
-                   <!-- Image for the plot -->
-                   <figure>
-
-                    {% if plot.plot_image %}
-
-                    <a href="{% url 'show_plot' plot.id %}"><img class="w-100" src="{{ plot.plot_image.url }}" alt=""></a>
-                    {% else %}
-                    <a href="{% url 'show_plot' plot.id %}"><img class="w-100" src="{% static 'images/default.jpg' %}" alt="Default image"></a>
-                    {% endif %}
-                </figure>
-
-                            <p class="text-truncate"><strong>Description:</strong> {{ plot.description }}</p>
-                            <ul>
-                                <li><strong>Campsite:</strong> {{ plot.campsite }}</li>
-                                <li><strong>Country:</strong> {{ plot.countries }}</li>
-                            </ul>
-
-                            <a class="btn btn-info btn-sm col" href="{% url 'show_plot' plot.id %}">
-                                View Plot</a>
-                            <hr>
-
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-                {% else %}
-                <div class="container text-center">
-                    <h1 class="">Try Again....</h1>
-                    <h2><em>No plots found</em></h2>
-                </div>
-                {% endif %}
-            </div>
-        </div>
-
-        <div class=" col-lg-3 ">
-            <div class=" row row-cols-md">
-                <h3 class="text-center">Super Campista !</h3>
-                <div class=" m-4">
-                    <div class="col ">
-
-                        {% include 'includes/search.html' %}
-
-                        {% include 'includes/categories.html' %}
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
+<!-- Showcase for non-authenticated users -->
+<div class="mx-auto text-2xl ">
+    {% if not user.is_authenticated %}
+    {% include 'includes/showcase.html' %}
+    {% endif %}
 </div>
 
+<!-- Main section -->
+<main class="grid grid-cols-1 lg:grid-cols-4">
+    <div class="col-span-3 p-4 mx-auto bg-slate-300 dark:bg-slate-500">
+        <h1 class="p-2 text-center bg-slate-100">You Searched for {{ search }}</h1>
+        {% include 'includes/cards.html' %}
+        {% block main %}{% endblock main %}
+    </div>
+    <div class="col-span-1 bg-slate-200 dark:bg-slate-400">
+        {% include 'includes/sidebar1.html' %}
+    </div>
 
+</main>
 
-
-<br>
-
-
+{% endif %}
 
 {% endblock content %}

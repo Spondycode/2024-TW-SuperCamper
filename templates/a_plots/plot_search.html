@@ -3,19 +3,21 @@
 {% block content %}
 
 {% if search %}
-<h1 class="text-center">You Searched for {{ search }}</h1>
 
 
-{% include 'includes/plot_list.html' %}
 
-<div class="col-md-4">
-    <div class="row row-cols-md">
-        <div class=" m-2 p-2">
-            {% include 'includes/sidebar1.html' %}
-        </div>
+<!-- Main section -->
+<main class="grid grid-cols-1 lg:grid-cols-4">
+    <div class="col-span-3 p-4 mx-auto bg-slate-300 dark:bg-slate-500">
+        <h1 class="p-2 text-center bg-slate-100">You Searched for {{ search }}</h1>
+        {% include 'includes/cards.html' %}
+        {% block main %}{% endblock main %}
     </div>
-</div>
-<br>
+    <div class="col-span-1 bg-slate-200 dark:bg-slate-400">
+        {% include 'includes/sidebar1.html' %}
+    </div>
+
+</main>
 
 
     
