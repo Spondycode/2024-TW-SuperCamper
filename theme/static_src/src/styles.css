@@ -11,7 +11,7 @@
 }
 
 .btn {
-  @apply px-3 py-2 text-sm font-semibold tracking-wider uppercase rounded-lg cursor-pointer;
+  @apply px-2 py-1 text-sm tracking-wider uppercase rounded-lg cursor-pointer;
 }
 
 
@@ -63,6 +63,20 @@ input[type="text"] {
 }
 
 input[type="number"] {
+  width: 100%;
+  border-width: 0px;
+  border-radius: 0.5rem;
+  border-color: #ffffff;
+}
+
+input[type="password"] {
+  width: 100%;
+  border-width: 0px;
+  border-radius: 0.5rem;
+  border-color: #ffffff;
+}
+
+input[type="email"] {
   width: 100%;
   border-width: 0px;
   border-radius: 0.5rem;

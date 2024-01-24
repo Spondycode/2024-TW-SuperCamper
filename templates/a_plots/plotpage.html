@@ -5,29 +5,11 @@
     <!-- Main section -->
     <main class="grid grid-cols-1 lg:grid-cols-4 ">
         <div class="col-span-3 p-4 bg-slate-300">
-            {% include 'includes/cards.html' %}<div class="p-2 m-2 shadow ">
-                <div class="text-center row">
-
-                    <h3 class="my-2 text-2xl font-semibold text-center ">
+            {% include 'includes/cards.html' %}
+                <div class="text-center ">
+                    <h3 class="mb-2 text-2xl font-semibold text-center ">
                         {{ plot.title }}</h3>
-
-                    <div class="my-5 w-f">
-  
-
-                        {% if plot.categories == 'Campsite' %}
-                        <a class="block px-3 mt-3 bg-blue-700 btn" href="{% url 'campsite-plots' %}">Campsite</a>
-                        {% endif %}
-
-                        {% if plot.categories == 'Official' %}
-                        <a class="block px-3 mt-3 bg-yellow-300 btn" href="{% url 'official-plots' %}">Official</a>
-                        {% endif %}
-
-                        {% if plot.categories == 'Wild' %}
-                        <a class="block px-3 mt-3 text-white bg-green-700 btn" href="{% url 'wild-plots' %}">Wild</a>
-                        {% endif %}
-                    </div>
                 </div>
-                <hr>
                 <!-- Plot image -->
                 <figure>
                     {% if plot.plot_image %}
@@ -36,17 +18,30 @@
                     <a href="#"><img class="mb-2 w-100" src="{% static 'images/default.jpg' %}" alt="Default image"></a>
                     {% endif %}
                 </figure>
+                <div class="w-full my-2 text-center">
+                    {% if plot.categories == 'Campsite' %}
+                    <a class="block px-3 mt-3 bg-blue-700 btn" href="{% url 'campsite-plots' %}">Campsite</a>
+                    {% endif %}
+
+                    {% if plot.categories == 'Official' %}
+                    <a class="block px-3 mt-3 bg-yellow-300 btn" href="{% url 'official-plots' %}">Official</a>
+                    {% endif %}
+
+                    {% if plot.categories == 'Wild' %}
+                    <a class="block px-3 mt-3 text-white bg-green-700 btn" href="{% url 'wild-plots' %}">Wild</a>
+                    {% endif %}
+                </div>
  
                 <div class="p-5 mt-5 text-xl">
                     <p class="text-truncate"><strong>Description:</strong> {{ plot.description }}</p>
                     
                     <p><strong>Campsite:</strong> {{ plot.campsite }}</p>
                     <p><strong>Price Per Night:</strong> {{ plot.price }}</p>
-                    <p><strong>Country:</strong> {{ plot.country }}</p>
+                    <p><strong>Country:</strong> {{ plot.countries }}</p>
                     
                     {% if plot.what3words is not None %}
                     <p><strong>What3Words:</strong> <a class="p-4 ml-3 text-white bg-blue-600 btn" href="{{ plot.what3words }}"> Get Directions</a> </p>
-                    <p class="p-3">Here is a precise what3words address, made of 3 random words. Every 3 metre square in
+                    <p class="p-3">This is a precise what3words address, made of 3 random words. Every 3 metre square in
                         the world has its own unique what3words address.</p>
                         {% endif %}
                     
@@ -111,8 +106,8 @@
                         
                 </div>
 
-                <h2 class="py-5 mt-3 mb-2 text-2xl font-semibold text-center text-white rounded-lg bg-sky-400 lg:py-10">Comments & Replies</h2>
-<div class="card">
+                <h2 class="py-2 mt-3 mb-2 text-2xl font-semibold text-center text-white rounded-lg bg-sky-400 lg:py-6">Comments & Replies</h2>
+
     <div class="bg-blue-200 card">
         {% if user.is_authenticated %}
         
@@ -137,7 +132,7 @@
             {% endfor %}
         </div>
     </div>
-</div>
+
 
             </div>
 

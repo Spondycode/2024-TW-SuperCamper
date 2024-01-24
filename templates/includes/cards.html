@@ -72,7 +72,7 @@
             
             {% if user in plot.likes.all %}
                 {% else %}
-            <a class="bg-yellow-500 btn hover:bg-yellow-400 hover:shadow-md" href="">Add a Like</a>
+            <a class="bg-yellow-500 btn hover:bg-yellow-400 hover:shadow-md" href="{% url 'like-plot' plot.id %}">Add a Like</a>
             {% endif %}
                 
         </div>
