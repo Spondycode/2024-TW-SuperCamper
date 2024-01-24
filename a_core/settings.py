@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "a_plot.apps.APlotConfig",
+    "a_users.apps.AUsersConfig",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
