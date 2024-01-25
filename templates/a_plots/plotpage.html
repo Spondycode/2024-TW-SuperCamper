@@ -100,7 +100,7 @@
 
                     {% endif %}
                     
-                    {% if user.is_superuser and not plot.owner %}
+                    {% if user.is_superuser  %}
                     <a class="text-center bg-red-600 btn" href="{% url 'delete-plot' plot.id %}">Delete Plot</a>
                     {% endif %}
                         
