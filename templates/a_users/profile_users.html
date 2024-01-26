@@ -10,7 +10,7 @@
         <!-- title and image -->
         <div class="text-center">
           {% if profile.image %}
-          <img class="mx-auto" src="{{ user.profile.image.url }}" alt="avatar" />
+          <img class="mx-auto" src="{{ profile.image.url }}" alt="avatar" />
           {% else %}
           <h3>Put an image here</h3>
           {% endif %}
@@ -49,16 +49,7 @@
         the Admin. Send an email to the Admin to discuss this if you think a mistake was made.
       </p>
       {% else %}
-      <a
-        class="border-2 border-yellow-500 btn hover:bg-yellow-500 hover:text-white"
-        href="{% url 'profile-edit' %}"
-        >Edit Profile</a
-      >
-      <a
-        class="border-2 border-sky-500 btn hover:bg-sky-500 hover:text-white"
-        href="/password_change"
-        >Password Change</a
-      >
+      
       {% endif %}
       <a
         class="ml-3 border-2 border-blue-500 btn hover:bg-blue-500 hover:text-white"
@@ -71,7 +62,7 @@
 
 <main class="grid grid-cols-1 lg:grid-cols-4">
   <div class="col-span-3 p-4 mx-auto bg-slate-300 dark:bg-slate-500">
-    {% include 'includes/cards.html' %} {% block main %}{% endblock main %}
+     {% block main %}{% endblock main %}
   </div>
   <div class="col-span-1 bg-slate-200 dark:bg-slate-400">
     {% include 'includes/sidebar1.html' %}

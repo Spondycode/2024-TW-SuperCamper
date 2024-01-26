@@ -20,7 +20,7 @@
                 </figure>
                 <div class="w-full my-2 text-center">
                     {% if plot.categories == 'Campsite' %}
-                    <a class="block px-3 mt-3 bg-blue-700 btn" href="{% url 'campsite-plots' %}">Campsite</a>
+                    <a class="block px-3 mt-3 text-white placeholder-transparent bg-blue-700 btnBerty really likes thisBerb " href="{% url 'campsite-plots' %}">Campsite</a>
                     {% endif %}
 
                     {% if plot.categories == 'Official' %}
@@ -47,8 +47,16 @@
                     
                     
                     {% if user != plot.owner %}
-                    <p><strong>Plot Poster:</strong> {{ plot.owner }} </p>
-                    <p><strong>Real Name:</strong> {{ plot.owner.profile.realname }} </p>
+                    
+                    {% if plot.owner %}
+                    <a href="">
+                        <p><strong>Plot Poster:</strong> {{ plot.owner }} </p>
+                    </a>
+                        <p><strong>Real Name:</strong> {{ plot.owner.profile.realname }} </p>
+                    {% else %}
+                    <span>No Owner</span>
+                    {% endif %}
+                        
                 </div>
 
                 <hr class="m-6 border-2 border-blue-900">

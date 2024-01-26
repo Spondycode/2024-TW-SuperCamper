@@ -17,7 +17,7 @@
                 <div class="flex justify-between max-w-lg mx-auto my-4">
                     <button type="submit" class="text-white bg-blue-600 btn">Submit</button>
                     <a class="text-white bg-gray-400 btn" href="{{ request.META.HTTP_REFERER }}">Cancel</a>
-                    <a class="text-white bg-red-600 btn" href="{% url 'profile-delete-confirm' %}">Delete Profile</a>
+                    <a class="text-white bg-red-600 btn" href="{% url 'profile-delete' %}">Delete Profile</a>
                 </div>
             </form>
         </div>
