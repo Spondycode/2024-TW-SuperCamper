@@ -105,7 +105,7 @@ def delete_plot_view(request, pk):
 
 
 #CHECK REPORTED PLOTS
-
+@login_required
 def check_reports_view(request):
     plot_count = Plot.objects.all().count()
     user_count = User.objects.all().count()
@@ -135,7 +135,7 @@ def check_reports_view(request):
     return render(request, "a_plots/check_reported.html", context)
 
 
-
+@login_required
 def plot_view(request, plot_id):
     plot = Plot.objects.get(id=plot_id)
     commentform = CommentCreateForm()
@@ -148,7 +148,7 @@ def plot_view(request, plot_id):
     return render(request, "a_plots/plotpage.html", context)
 
 
-
+@login_required
 def my_plots_view(request):
     if request.user.is_authenticated:
         plots = Plot.objects.filter(user=request.owner)  # Fetch plots created by the logged in user
@@ -307,6 +307,7 @@ def wild_plots_view(request):
 
 
 # LIKES
+@login_required
 def like_plot(request, pk):
     plot = get_object_or_404(Plot, id=pk)
     user_exists = plot.likes.filter(username=request.user.username).exists()
@@ -319,7 +320,7 @@ def like_plot(request, pk):
         
     return render(request, "a_plots/plotpage.html", {"plot": plot})
 
-
+@login_required
 def like_comment(request, pk):
     comment = get_object_or_404(Comment, id=pk)
     user_exists = comment.likes.filter(username=request.user.username).exists()
