@@ -20,11 +20,11 @@
 
         {% if plot.owner %}
         <p class="my-2 text-center text-blue-900 border-2 btn border-sky-400 hover:bg-blue-300 ">
-            User Name - {{ plot.owner }}</p>
+            <a href="{% url 'user-profile' plot.owner.username %}">User Name - {{ plot.owner }}</a></p>
         {% else %}
         <h3 class="block my-2 text-blue-900 border-2 btn border-sky-400 ">
             No owner</h3>
-        </a>
+        
         {% endif %}
         <p class="text-truncate"><strong>Description:</strong> {{ plot.description }}</p>
         <p><strong>Campsite:</strong> {{ plot.campsite }}</p>

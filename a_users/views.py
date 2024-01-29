@@ -28,6 +28,22 @@ def profile_view(request):
 
 
 
+# View the profile of an owner os a plot and show plots created by the user
+def user_profile_view(request, username):
+    try:
+        user = User.objects.get(username=username)
+        plots = Plot.objects.filter(owner=user)  # Fetch plots created by the logged in user
+        profile = user.profile
+        context = {
+            "plots": plots,
+            "profile": profile,
+        }
+        return render(request, "a_users/user_profile.html", context)
+    except User.DoesNotExist:
+        raise Http404("User does not exist")
+    except Plot.DoesNotExist:
+        raise Http404("Plot does not exist")
+
 
 
 

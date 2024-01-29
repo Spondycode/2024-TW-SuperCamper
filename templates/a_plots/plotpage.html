@@ -49,12 +49,15 @@
                     {% if user != plot.owner %}
                     
                     {% if plot.owner %}
-                    <a href="">
-                        <p><strong>Plot Poster:</strong> {{ plot.owner }} </p>
-                    </a>
-                        <p><strong>Real Name:</strong> {{ plot.owner.profile.realname }} </p>
-                    {% else %}
-                    <span>No Owner</span>
+                    <div class="p-4 my-6 border-2 rounded-lg bg-slate-400 mx-14">
+                        <a href="{% url 'user-profile' plot.owner.username %}">
+                            
+                            <p class="text-center"><strong>Plot Poster:</strong> {{ plot.owner.username }} </p>
+                        </a>
+                            <p class="text-center"><strong>Real Name:</strong> {{ plot.owner.profile.realname }} </p>
+                        {% else %}
+                        <span>No Owner</span>
+                    </div>
                     {% endif %}
                         
                 </div>

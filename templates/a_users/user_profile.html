@@ -62,7 +62,7 @@
 
 <main class="grid grid-cols-1 lg:grid-cols-4">
   <div class="col-span-3 p-4 mx-auto bg-slate-300 dark:bg-slate-500">
-     {% block main %}{% endblock main %}
+    {% include 'includes/cards.html' %} {% block main %}{% endblock main %}
   </div>
   <div class="col-span-1 bg-slate-200 dark:bg-slate-400">
     {% include 'includes/sidebar1.html' %}
