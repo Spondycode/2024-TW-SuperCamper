@@ -6,15 +6,15 @@
     <div class="w-full p-4 mx-auto bg-gray-200 card dark:bg-gray-400">
         <h3 class="text-2xl font-semibold text-center text-blue-900 "> {{ plot.title }}</h3>
         {% if plot.categories == 'Campsite' %}
-        <a class="block px-3 mt-3 text-center text-white bg-blue-600 btn hover:bg-blue-500 hover:shadow-md" href="">Campsite</a>
+        <a class="block px-3 mt-3 text-center text-white bg-blue-600 btn hover:bg-blue-500 hover:shadow-md" href="{% url 'campsite-plots' %}">Campsite</a>
         {% endif %}
 
         {% if plot.categories == 'Official' %}
-        <a class="block px-3 mt-3 text-center text-white bg-yellow-500 btn hover:bg-yellow-400 hover:shadow-md" href="">Official</a>
+        <a class="block px-3 mt-3 text-center text-white bg-yellow-500 btn hover:bg-yellow-400 hover:shadow-md" href=" {% url 'official-plots' %}">Official</a>
         {% endif %}
 
         {% if plot.categories == 'Wild' %}
-        <a class="block px-3 mt-3 text-center text-white bg-green-700 btn hover:bg-green-600 hover:shadow-md" href="">Wild</a>
+        <a class="block px-3 mt-3 text-center text-white bg-green-700 btn hover:bg-green-600 hover:shadow-md" href=" {% url 'wild-plots' %}">Wild</a>
         {% endif %}
 
 
