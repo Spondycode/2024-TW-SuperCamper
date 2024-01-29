@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import Http404
 # from django.contrib.auth.models import User
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 
@@ -47,29 +48,34 @@ def user_profile_view(request, username):
 
 
 
-    
 
-# Edit the profile of the logged in user
-@login_required()
+
+@login_required
 def profile_edit_view(request):
-    if request.user.is_authenticated:
-        profile = request.user.profile
-        form = ProfileAddForm(instance=profile)
-        context = {
-            "form": form,
-            "profile": profile,
-        }
-        if request.method == "POST":
-            form = ProfileAddForm(request.POST, request.FILES, instance=profile)
-            if form.is_valid():
-                form.save()
-                messages.success(request, "Profile updated successfully")
-                return redirect("profile")
-        return render(request, "a_users/profile_edit.html", context)
+    form = ProfileAddForm(instance=request.user.profile)
+    
+    if request.method == "POST":
+        form = ProfileAddForm(request.POST, request.FILES, instance=request.user.profile)
+        if form.is_valid():
+            form.save()
+            return redirect("profile")
         
+    if request.path == reverse("profile-onboarding"):
+        template = 'a_users/profile_onboarding.html'
     else:
-        messages.success(request, "You need to login first")
-        return redirect("/login")
+        template = 'a_users/profile_edit.html'
+        
+    return render(request, template, {"form": form})
+
+
+
+
+
+
+
+
+
+
     
     
     #create a view to create a profile
