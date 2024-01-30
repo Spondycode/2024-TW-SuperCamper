@@ -69,20 +69,27 @@
                 {% endif %} 
             </div>
             <div>
-                <h5 class="mt-2 text-xl text-red-700 ">
-                    🎈 Likes: {{ plot.likes.count }}
+                <h5 class="mb-3 text-xl ">
+                            
+                    {% if user in plot.likes.all %}
+                    💙 Liked: {{ plot.likes.count }}
+                    {% else %}
+                    ❤️ Likes: {{ plot.likes.count }}    
+                    {% endif %}
+                        
                 </h5>
             </div>
         </div>
             {% if user.is_authenticated and user != plot.owner %}
         <div class="flex justify-between m-4 ">
-            <a class="border-2 border-red-600 btn hover:bg-red-500 hover:text-white hover:shadow-md" href="{% url 'report-plot' plot.id %}">Report</a>
             
             {% if user in plot.likes.all %}
-                {% else %}
-            <a class="bg-yellow-500 btn hover:bg-yellow-400 hover:shadow-md" href="{% url 'like-plot' plot.id %}">Add a Like</a>
+            <p class="border-2 border-blue-600 btn hover:shadow-md">You liked this</p>
+            {% else %}
+            <a class="border-2 border-yellow-500 btn hover:bg-yellow-500 hover:shadow-md" href="{% url 'like-plot' plot.id %}">Add a Like</a>
             {% endif %}
-                
+            <a class="border-2 border-red-600 btn hover:bg-red-500 hover:text-white hover:shadow-md" href="{% url 'report-plot' plot.id %}">Report</a>
+            
         </div>
         {% endif %}
 

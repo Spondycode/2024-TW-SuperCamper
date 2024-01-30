@@ -67,19 +67,19 @@
                     <div class="my-3 ">
                         {% if plot.comments.count %}
                         <h5 class="mt-2 text-xl text-center text-blue-600">
-                            🗣️ Comments: <span class="">{{ plot.comments.count }}</span>
+                            📣 Comments: <span class="">{{ plot.comments.count }}</span>
                         </h5>
                         {% else %}
-                        <p class="text-2xl text-center ">🗣️ Add a Comment below..</p>
+                        <p class="text-2xl text-center ">📣 Add a Comment below..</p>
                         {% endif %}
                     </div>
                     <div>
                         <h5 class="mb-3 text-xl text-center ">
                             
                             {% if user in plot.likes.all %}
-                            🎈 Liked: {{ plot.likes.count }}
+                            💙 Plot Liked: {{ plot.likes.count }}
                             {% else %}
-                            🎈 Likes: {{ plot.likes.count }}    
+                            ❤️ Likes: {{ plot.likes.count }}    
                             {% endif %}
                                 
                         </h5>
@@ -91,7 +91,7 @@
                         {% if user in plot.likes.all %}
                         <a class="w-64 bg-gray-400 btn " href="{% url 'like-plot' plot.id %}">Remove Like</a>                       
                         {% else %}
-                        <a class="w-64 mx-auto text-white bg-red-400 btn" href="{% url 'like-plot' plot.id %}">Like</a>
+                        <a class="w-64 mx-auto text-white bg-red-600 btn" href="{% url 'like-plot' plot.id %}">Like</a>
                         {% endif %}
                 </div>
                     {% endif %}
@@ -143,9 +143,7 @@
             {% endfor %}
         </div>
     </div>
-
-
-            </div>
+</div>
 
 
 </div>
