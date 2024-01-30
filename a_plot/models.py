@@ -196,5 +196,4 @@ class Reply(models.Model):
     class Meta:
         ordering = ["-created"]
         
- 
-    
+

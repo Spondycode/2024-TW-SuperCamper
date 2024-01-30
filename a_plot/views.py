@@ -331,7 +331,7 @@ def like_comment(request, pk):
         else:
             comment.likes.add(request.user)
         
-    return HttpResponse(comment.likes.count() )
+    return render(request, 'snippets/comment_likes.html', {'comment': comment})
 
 
 

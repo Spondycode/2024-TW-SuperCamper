@@ -121,7 +121,7 @@
 
     <div class="bg-blue-200 card">
         {% if user.is_authenticated %}
-        
+        <!-- COMMENT FORM -->
             <div class="shadow card">
                 <div class="container mt-2">
                     <form method="POST" , action="{% url 'comment-sent' plot.id %}">
