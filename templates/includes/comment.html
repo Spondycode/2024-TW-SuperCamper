@@ -1,65 +1,58 @@
 {% load static %}
-<comment class="">
-
-    
-    
-    <div class="p-10 mt-6 border-2 border-blue-600 rounded-xl">
-        {% if comment.author%}
-        <div class="flex flex-row justify-around mx-6 border-2 rounded-lg border-slate-800">
-            <p class="p-2 text-blue-500 ">Comment by:{{ comment.author.username}}<p>
-            <p class="p-2 ">Date : {{ comment.created }}</p>
-                {% else %}
-            <p>No Author</p>
-            {% endif %}
-        </div>
-        
-        <h6 class="m-6 text-2xl font-semibold text-blue-700 "> {{ comment.body }}</h6>
-
-        <div>
-                <div class="mb-4 text-end">
-
-<!-- Likes-comment -->
-                    <div class="mb-2">
-                        
-{% include 'snippets/comment_likes.html' %}
 
 
-                    
-                    </div>
 
-
-                    <!-- Only allow delete by author -->
-                    {% if user.is_authenticated and comment.author == user %}
-                    <a class="text-sm border-2 border-red-400 shadow btn hover:bg-red-600 hover:text-white "
-                        href="{% url 'delete-comment' comment.id %}">Delete Comment</a>
-                    {% endif %}
-                </div>
-            
-            {% if comment.replies.count and user.is_authenticated%}
-            <h5 class="pt-2 m-3 text-xl font-medium text-center">Replies:
-                {{ comment.replies.count }}
-            </h5>
-            {% endif %}
-
-            <div class="mx-3">
-                {% for reply in comment.replies.all %}
-                {% include 'a_plots/reply.html' %}
-                {% endfor %}
-            </div>
-        </div>
-        
-        <!-- Add a Reply -->
-        {% if user.is_authenticated %}
-        <div class="mx-2 bg-slate-200 card">
-            <h3 class="ml-2 text-sm">Reply to the Comment Above</h3>
-            <form class="m-2" method="POST" action="{% url 'reply-sent' comment.id %}">
-                {% csrf_token %}
-                {{ replyform.as_p }}
-                <button class="block mb-2 shadow btn bg-sky-500 hover:bg-sky-700">Submit</button>
-            </form>
-        </div>
+    {% if comment.author%}
+    <div class="flex flex-row justify-around m-6 bg-blue-400 rounded-lg">
+        <p class="p-2 text-sm font-semibold text-blue-500">Comment by:{{ comment.author.username}}</p>
+        <p class="p-2 text-sm ">Date : {{ comment.created }}</p>
+        {% else %}
+        <p>No Author</p>
         {% endif %}
-
-
     </div>
-</comment>
+
+    <h6 class="m-6 text-2xl font-semibold text-blue-700 "> {{ comment.body }}</h6>
+
+    <div>
+        <div class="mb-4 text-end">
+
+            <!-- Likes-comment -->
+            <div class="mb-2">
+                {% include 'snippets/comment_likes.html' %}
+            </div>
+
+
+            <!-- Only allow delete by author -->
+            {% if user.is_authenticated and comment.author == user %}
+            <a class="text-sm border-2 border-red-400 shadow btn hover:bg-red-600 hover:text-white "
+                href="{% url 'delete-comment' comment.id %}">Delete Comment</a>
+            {% endif %}
+        </div>
+
+        {% if comment.replies.count and user.is_authenticated%}
+        <h5 class="pt-2 m-3 text-xl font-medium text-center ">Replies:
+            {{ comment.replies.count }}
+        </h5>
+        {% endif %}
+        
+    </div>
+
+        <div class="mx-3">
+            {% for reply in comment.replies.all %}
+            {% include 'a_plots/reply.html' %}
+            {% endfor %}
+        </div>
+
+    <!-- Add a Reply -->
+    {% if user.is_authenticated %}
+    <div class="mx-2 bg-slate-200 card">
+        <h3 class="ml-2 text-sm">Reply to the Comment Above</h3>
+        <form class="m-2" method="POST" action="{% url 'reply-sent' comment.id %}">
+            {% csrf_token %}
+            {{ replyform.as_p }}
+            <button class="block mb-2 shadow btn bg-sky-500 hover:bg-sky-700">Submit</button>
+        </form>
+    </div>
+    {% endif %}
+
+

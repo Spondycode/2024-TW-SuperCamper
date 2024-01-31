@@ -3,7 +3,7 @@
 {% block content %}
 
     <!-- Main section -->
-    <main class="grid grid-cols-1 lg:grid-cols-4 ">
+
         <div class="col-span-3 p-4 bg-slate-300">
             {% include 'includes/cards.html' %}
                 <div class="text-center ">
@@ -122,7 +122,7 @@
     <div class="bg-blue-200 card">
         {% if user.is_authenticated %}
         <!-- COMMENT FORM -->
-            <div class="shadow card">
+            <div class="bg-blue-300 shadow card">
                 <div class="container mt-2">
                     <form method="POST" , action="{% url 'comment-sent' plot.id %}">
                         {% csrf_token %}
@@ -145,15 +145,17 @@
     </div>
 </div>
 
-
+<!-- add the sidebar stuff here - but in a grid -->
+<div class="flex flex-col my-6 bg-gray-500 rounded-lg lg:flex-row">
+    
+    
+    <div class="p-2 col ">{% include 'includes/plotoftheweek.html' %}</div>
+    <div class="col-span-2 p-2">{% include 'includes/products.html' %} </div>
+    
+    <div class="p-2 col">{% include 'includes/languages.html' %}</div>
 </div>
 
-      <!--   SIDEBAR -->
-        <div class="col-span-1 bg-slate-200">
-            {% include 'includes/sidebar1.html' %}
-        </div>
 
-    </main>
 
 
 {% endblock content %}

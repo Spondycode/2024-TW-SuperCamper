@@ -27,6 +27,7 @@ urlpatterns = [
     path("delete_reply/<pk>/", delete_reply, name="delete-reply"),
     path("questions/", questions_view, name="questions"),
     path("report_plot/<pk>/", report_plot_view, name="report-plot"),
-    path("check_reports/", check_reports_view, name="check-reports")
+    path("check_reports/", check_reports_view, name="check-reports"),
+    path("about/", about_view, name="about"),
     
 ]
