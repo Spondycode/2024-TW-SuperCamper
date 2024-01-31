@@ -4,7 +4,7 @@
 
     <!-- Main section -->
 
-        <div class="col-span-3 p-4 bg-slate-300">
+<div class="col-span-3 p-4 bg-slate-300">
             {% include 'includes/cards.html' %}
                 <div class="text-center ">
                     <h3 class="mb-2 text-2xl font-semibold text-center text-blue-800 ">
@@ -13,9 +13,9 @@
                 <!-- Plot image -->
                 <figure>
                     {% if plot.plot_image %}
-                    <a href="#"><img class="w-full mb-2" src="{{ plot.plot_image.url }}" alt="Plot Image"></a>
+                    <a href="#"><img class="w-full mx-auto mb-2" src="{{ plot.plot_image.url }}" alt="Plot Image"></a>
                     {% else %}
-                    <a href="#"><img class="mb-2 w-100" src="{% static 'images/default.jpg' %}" alt="Default image"></a>
+                    <a href="#"><img class="mx-auto mb-2 w-100" src="{% static 'images/default.jpg' %}" alt="Default image"></a>
                     {% endif %}
                 </figure>
                 <div class="w-full my-2 text-center">
@@ -146,13 +146,13 @@
 </div>
 
 <!-- add the sidebar stuff here - but in a grid -->
-<div class="flex flex-col my-6 bg-gray-500 rounded-lg lg:flex-row">
-    
-    
-    <div class="p-2 col ">{% include 'includes/plotoftheweek.html' %}</div>
-    <div class="col-span-2 p-2">{% include 'includes/products.html' %} </div>
-    
-    <div class="p-2 col">{% include 'includes/languages.html' %}</div>
+<hr class="my-10 border-2 border-blue-900">
+
+<div class="grid gap-6 my-6 lg:grid-cols-4 min-h-96">
+    <div class="h-full">{% include 'includes/plotoftheweek.html' %}</div>
+    <div class="h-full ">{% include 'includes/products.html' %} </div>
+    <div class="h-full">{% include 'includes/languages.html' %}</div>
+    <div class="h-full">{% include 'includes/search.html' %}</div>
 </div>
 
 
