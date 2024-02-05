@@ -356,7 +356,7 @@ def comment_sent(request, pk):
             comment.parent_plot = plot
             comment.save()
         
-    return render(request, "includes/comment.html", {"comment": comment})
+    return render(request, "snippets/add_comment.html", {"comment": comment, "plot": plot})
 
 
 
