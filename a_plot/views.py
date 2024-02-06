@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
-from django.http import HttpResponse
+# from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from .models import Plot, Comment, Reply
 from a_users.models import Profile
