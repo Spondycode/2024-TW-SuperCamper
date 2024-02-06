@@ -30,7 +30,7 @@
         </div>
 
         {% if comment.replies.count and user.is_authenticated%}
-        <h5 class="pt-2 m-3 text-xl font-medium text-center ">Replies:
+        <h5 id="repliescount-{{ comment.id }}" class="pt-2 m-3 text-xl font-medium text-center ">Replies:
             {{ comment.replies.count }}
         </h5>
         {% endif %}
@@ -45,12 +45,17 @@
 
     <!-- Add a Reply -->
     {% if user.is_authenticated %}
-    <div class="mx-2 bg-slate-200 card">
+    <div  class="mx-10 bg-slate-200 card">
         <h3 class="ml-2 text-sm">Reply to the Comment Above</h3>
-        <form class="m-2" method="POST" action="{% url 'reply-sent' comment.id %}">
+        <form class="m-2" autocomplete="off" 
+        hx-post="{% url 'reply-sent' comment.id %}"
+        hx-target="this"
+        hx-swap="outerHTML">
             {% csrf_token %}
-            {{ replyform.as_p }}
-            <button class="block mb-2 shadow btn bg-sky-500 hover:bg-sky-700">Submit</button>
+            <div class="flex space-x-2">
+                <div class="flex-grow ">{{ replyform.as_p }}</div>
+                <button class="block mb-2 shadow btn bg-sky-500 hover:bg-sky-700">Submit</button>
+            </div>
         </form>
     </div>
     {% endif %}

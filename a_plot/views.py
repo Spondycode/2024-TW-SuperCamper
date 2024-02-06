@@ -347,6 +347,7 @@ def like_comment(request, pk):
 @login_required
 def comment_sent(request, pk):
     plot = get_object_or_404(Plot, id=pk)
+    replyform=ReplyCreateForm()
     
     if request.method == "POST":
         form = CommentCreateForm(request.POST)
@@ -355,19 +356,19 @@ def comment_sent(request, pk):
             comment.author = request.user # get the logged in user
             comment.parent_plot = plot
             comment.save()
+            
+        context = {
+            "comment": comment,
+            "plot": plot,
+            "replyform": replyform,}
         
-    return render(request, "snippets/add_comment.html", {"comment": comment, "plot": plot})
-
-
-
-
-
-
+    return render(request, "snippets/add_comment.html", context )
 
 
 @login_required
 def reply_sent(request, pk):
     comment = get_object_or_404(Comment, id=pk)
+    replyform=ReplyCreateForm()
     
     if request.method == "POST":
         form = ReplyCreateForm(request.POST)
@@ -376,8 +377,17 @@ def reply_sent(request, pk):
             reply.author = request.user # get the logged in user
             reply.parent_comment = comment
             reply.save()
+            
+    context = {
+        "reply": reply,
+        "comment": comment,
+        "replyform": replyform,}
         
-    return redirect("show-plot", comment.parent_plot.id)
+    return render(request, "snippets/add_reply.html", context)
+
+
+
+
 
 
 
