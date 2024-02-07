@@ -26,7 +26,7 @@ class PlotAddForm(ModelForm):
             'title': forms.TextInput(attrs={'placeholder': 'Your name for it...'}), # 'class': 'form-control'
             'description': forms.Textarea(attrs={'rows': 4, 'placeholder': 'Add a description...'}),
             'price': forms.NumberInput(attrs={'placeholder': 'Add a price...'}),
-            'plot': forms.TextInput(attrs={'placeholder': 'Campsite ID or None...'}),
+            'plot': forms.TextInput(attrs={'placeholder': 'Plot ID/number or None...'}),
             'what3words': forms.TextInput(attrs={'placeholder': 'Add a what3words URL...'}),
             'campsite': forms.TextInput(attrs={'placeholder': 'Campsite name or None...'}),
         }

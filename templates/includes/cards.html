@@ -101,7 +101,31 @@
     {% endfor %}
         
 
+    
 </div>
+
+
+<div class="flex items-center justify-center mx-auto mt-4">
+    
+    <div class="flex p-2 space-x-4">
+        {% if plots.has_previous %}
+            <a class="hover:bg-yellow-400" href="?page=1">&laquo First</a>
+            <a class="hover:bg-yellow-400" href="?page={{ plots.previous_page_number }}">Previous</a>
+        {% endif %}
+    </div>
+
+    
+    <div class="p-2 bg-gray-200 border-2 border-gray-400 rounded-md">Page {{ plots.number }} of {{ plots.paginator.num_pages }}</div>
+
+    <div class="flex p-2 space-x-4">
+        {% if plots.has_next %}
+        <a href="?page={{ plots.next_page_number }}">Next</a>
+            <a href="?page={{ plots.paginator.num_pages }}">Last &raquo;</a>
+        {% endif %}
+    </div>
+        
+</div>
+
 
 <!-- {% else %}
 <h1 class="text-2xl font-semibold text-center">No Plots to Show Yet !!</h1>

@@ -8,15 +8,22 @@ from .forms import PlotAddForm, PlotEditForm, CommentCreateForm, ReplyCreateForm
 from django.contrib import messages 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.core.paginator import Paginator
 
 # Create your views here.
 def home(request):
     plots = Plot.objects.all()
     level = Profile.objects.filter(level=request.user)
+    
+    paginator = Paginator(plots, 24)  # Show 12 plots per page
+    page = int(request.GET.get('page', 1))
+    plots = paginator.page(page)
+    
     context = {
         'title': 'SuperCamper',
         'plots': plots,
         'level': level,
+        'page': page,
     }
     return render(request, "index.html", context)
 
@@ -198,21 +205,7 @@ def questions_view(request):
 
 
 
-# Search for a plot by Category
-def campsite_plots_view(request):
-    if request.user.is_authenticated:
-        plots = Plot.objects.filter(categories__icontains="Campsite")  # Fetch plots with category "Campsite"
-        context = {
-            "plots": plots,
-        }
-        return render(request, "a_plots/campsite_plots.html", context)
-        
-    else:
-        messages.success(request, "You need to login first")
-        return redirect("/login")
-    
-    
-    
+
     
     # SEarch plots
 def search_plots_view(request):
@@ -220,9 +213,15 @@ def search_plots_view(request):
     if request.method == "POST":
         search = request.POST["search"]
         plots = Plot.objects.filter(title__contains=search)
+        
+        paginator = Paginator(plots, 12)  # Show 7 plots per page
+        page = int(request.GET.get('page', 1))
+        plots = paginator.page(page)
+        
         context = {
             "plots": plots,
-            "search": search
+            "search": search,
+            "page": page,
         }
         return render(request, "a_plots/plot_search.html", context)
         plots = Plot.objects.filter(title__icontains=query)
@@ -235,24 +234,30 @@ def search_plots_view(request):
     return render(request, "a_plots/plot_search.html", context)
 
 
-# search plots by category
-def search_categories_view(request):
+# search plots by campsite
+def search_campsites_view(request):
     if request.method == "POST":
         search = request.POST["search"]
-        plots = Plot.objects.filter(categories__contains=search)
+        plots = Plot.objects.filter(campsite__contains=search)
+
+        paginator = Paginator(plots, 12)  # Show 7 plots per page
+        page = int(request.GET.get('page', 1))
+        plots = paginator.page(page)
+
         context = {
             "plots": plots,
-            "search": search
+            "search": search,
+            "page": page,
         }
-        return render(request, "a_plots/category_search.html", context)
-        plots = Plot.objects.filter(categories__icontains=query)
+        return render(request, "a_plots/campsite_search.html", context)
+        plots = Plot.objects.filter(campsite__icontains=query)
     else:
         plots = Plot.objects.all()
     context = {
         "plots": plots,
     }
     
-    return render(request, "a_plots/category_search.html", context)
+    return render(request, "a_plots/campsite_search.html", context)
 
 
 
@@ -261,9 +266,16 @@ def search_countries_view(request):
     if request.method == "POST":
         search = request.POST["search"]
         plots = Plot.objects.filter(countries__contains=search)
+        
+        paginator = Paginator(plots, 12)  # Show 7 plots per page
+        page = int(request.GET.get('page', 1))
+        plots = paginator.page(page)
+        
+        
         context = {
             "plots": plots,
-            "search": search
+            "search": search,
+            "page": page,
         }
         return render(request, "a_plots/country_search.html", context)
         plots = Plot.objects.filter(countries__icontains=query)
@@ -277,11 +289,46 @@ def search_countries_view(request):
 
 
 
+
+# Search For Plots by Category - Campsite, Wild, Official
+
+# Search for a plot tag "campsite"
+def campsite_plots_view(request):
+    if request.user.is_authenticated:
+        plots = Plot.objects.filter(categories__icontains="Campsite")  # Fetch plots with category "Campsite"
+        
+        paginator = Paginator(plots, 12)  # Show 7 plots per page
+        page = int(request.GET.get('page', 1))
+        plots = paginator.page(page)
+        
+        context = {
+            "plots": plots,
+            "page": page,
+            
+        }
+        return render(request, "a_plots/campsite_plots.html", context)
+        
+    else:
+        messages.success(request, "You need to login first")
+        return redirect("/login")
+    
+    
+    
+
+
+
+
 def official_plots_view(request):
     if request.user.is_authenticated:
         plots = Plot.objects.filter(categories__icontains="Official")  # Fetch plots with category "Official"
+        
+        paginator = Paginator(plots, 1)  # Show 7 plots per page
+        page = int(request.GET.get('page', 1))
+        plots = paginator.page(page)
+        
         context = {
             "plots": plots,
+            "page": page,
         }
         return render(request, "a_plots/official_plots.html", context)
         
@@ -294,8 +341,13 @@ def official_plots_view(request):
 def wild_plots_view(request):
     if request.user.is_authenticated:
         plots = Plot.objects.filter(categories__icontains="Wild")  # Fetch plots with category "Wild"
+        
+        paginator = Paginator(plots, 12)  # Show 7 plots per page
+        page = int(request.GET.get('page', 1))
+        plots = paginator.page(page)
         context = {
             "plots": plots,
+            "page": page,
         }
         return render(request, "a_plots/wild_plots.html", context)
         
