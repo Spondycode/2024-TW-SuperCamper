@@ -33,6 +33,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "a_plot.apps.APlotConfig",
     "a_users.apps.AUsersConfig",
+    
+    "django_htmx",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
@@ -66,6 +68,7 @@ MIDDLEWARE = [
     "django_browser_reload.middleware.BrowserReloadMiddleware",
     
     "allauth.account.middleware.AccountMiddleware",
+    "django_htmx.middleware.HtmxMiddleware",
 ]
 
 ROOT_URLCONF = "a_core.urls"
