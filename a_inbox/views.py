@@ -2,9 +2,10 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from a_users.models import Profile
+from .forms import InboxNewMessageForm
 from django.http import HttpResponse, Http404
 from django.db.models import Q
-from.models import InboxMessage, Conversation
+from.models import Conversation
 
 @login_required
 def inbox_view(request, conversation_id=None):
@@ -28,8 +29,19 @@ def search_users(request):
             users = User.objects.filter(
                 Q(username__icontains=letters) | Q(id__in=users_id)
             ).exclude(username=request.user.username)
-            return render(request, "a_inbox/list_searchuser.html", {"users": users})
+            return render(request, "a_inbox/list_search_user.html", {"users": users})
         else:
             return HttpResponse("")
     else:
         raise Http404("Page not found")
+    
+
+@login_required
+def new_message(request, recipient_id):
+    recipient = get_object_or_404(User, id=recipient_id)
+    new_message_form = InboxNewMessageForm()
+    context = {
+        "recipient": recipient,
+        "new_message_form": new_message_form,
+    }
+    return render(request, "a_inbox/form_newmessage.html", context)

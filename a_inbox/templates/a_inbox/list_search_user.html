@@ -3,7 +3,10 @@
     {% for user in users %}
         
     <li>
-        <a href="" class="flex items-center gap-1 p-2 rounded-lg cursor-pointer hover:bg-zinc-100">
+        <a  class="flex items-center gap-1 p-2 rounded-lg cursor-pointer hover:bg-zinc-100"
+        hx-get="{% url 'inbox-newmessage' user.id %}"
+        hx-target="#new-message"
+        hx-swap="innerHTML">
             <img class="object-cover w-10 h-10 mr-1 rounded-full" src="https://img.icons8.com/color/48/cookie-monster.png">
             <div class="font-bold">{{ user.profile.realname }}<span class="text-xs font-normal text-zinc-500">@{{ user.username }}</span></div>
         </a>

@@ -1,0 +1,19 @@
+<div class="flex items-center gap-2 mb-5">
+    <span class="font-bold">To:</span>
+    <div class="flex items-center gap-1">
+        <img class="object-cover w-10 h-10 mr-1 rounded-full" src="https://img.icons8.com/color/48/cookie-monster.png">
+        <div class="font-bold">{{ recipient.profile.realname }} 
+            <span class="text-xs font-normal text-zinc-500">@{{ recipient.username }} </span>
+        </div>
+    </div>
+</div>
+
+<div class="mb-5">
+    <form method='POST' action="{% url 'inbox-newmessage' recipient.id %}">
+        {% csrf_token %}
+        {{ new_message_form.as_p }}
+        <button type="submit" class="mt-1">Submit Message</button>
+        <a @click="modal_open = false" href="{{ request.META.HTTP_REFERER }}" class="ml-1 cursor-pointer button secondaryAction" 
+           _="on click reset() the closest <form/>">Cancel</a>
+    </form>
+</div>
