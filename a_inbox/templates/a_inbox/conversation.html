@@ -1,0 +1,61 @@
+<div id='conversation' class="relative flex flex-col col-span-4 pt-10 overflow-y-auto bg-white opacity-0 sm:col-span-3 rounded-r-2xl"
+_="on load wait for 5ms then remove .opacity-0">
+
+{% if conversation %}
+    
+
+    
+
+<div class="flex items-center justify-center space-x-4 text-center">
+    {% for participant in conversation.participants.all %}
+                
+                {% if participant != request.user %}
+    <a href="{% url 'user-profile' participant.username %}">
+        <img class="object-cover w-12 h-12 mb-4 rounded-full" src="https://img.icons8.com/color/120/cookie-monster.png" />
+    </a>
+    <div class="max-w-md text-center">
+        <h1 class="text-lg">{{ participant.profile.realname }}</h1>
+        <div class="mt-5 mb-2 text-sm text-gray-400">@{{ participant.username }}</div>
+        
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+
+<ul id='inbox_messages' class="flex flex-col justify-end gap-6 p-4 pb-0 grow sm:p-10">
+    
+    {% for message in conversation.messages.all reversed %}
+    
+    <li>
+        <div class="flex flex-col gap-1 md:flex-row md:gap-6">
+            <a class="contents" href="{% url 'user-profile' message.sender.username %}">
+                <img class="object-cover rounded-full w-14 h-14" src="https://img.icons8.com/color/120/cookie-monster.png">
+            </a>
+            <div class="w-full p-4 bg-white border-2 border-gray-200 rounded-xl">
+                <div class="flex flex-col justify-between pb-3 text-xs md:flex-row text-zinc-500">
+                    <div>
+                        <span class="mr-1 text-base font-bold text-black">{{ message.sender.profile.realname }} </span>@{{ message.sender.username }}
+                    </div>
+                    <div>{{ message.created }} - {{ message.created|timesince }}</div>
+                </div>
+                <div>{{ message.body }}</div>
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+
+</ul>
+
+<div class="sticky bottom-0 flex px-4 pt-6 pb-10 bg-white z-1 sm:px-10">
+    <a href="" class="flex items-center gap-2 px-6 py-3 pr-8 text-white bg-gray-800 rounded-full cursor-pointer hover:bg-indigo-600">
+        <img class="h-6" src="https://img.icons8.com/material/96/ffffff/reply-arrow--v1.png">
+        <div class="text-white rounded-full">Reply</div>
+    </a>
+</div>
+    
+    {% else %}
+        <div class="flex items-center justify-center h-full p-10 -mt-6 text-2xl text-center text-gray-500">Select a conversation or create a new message</div>
+
+{% endif %}
+ 
+</div>

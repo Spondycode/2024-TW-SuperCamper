@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<inbox class="grid grid-cols-5 sm:grid-cols-4 h-[calc(100vh-8rem)] md:h-[calc(100vh-12rem)] shadow-2xl rounded-2xl mx-1 lg:mx-10 xl:mx-48">
+    <div x-data="{ modal_open: false }" class="col-span-1 p-2 overflow-y-auto bg-slate-10 rounded-l-2xl">
+
+        <div class="sticky top-0 z-10 p-0 mb-3 sm:p-4">
+            <a @click="modal_open = true" class="flex items-center justify-center gap-2 text-white bg-indigo-600 rounded-full cursor-pointer h-14 sm:h-16 hover:bg-indigo-700">
+                <img class="h-6 m-auto lg:m-0" src="https://img.icons8.com/external-anggara-glyph-anggara-putra/32/ffffff/external-edit-user-interface-anggara-glyph-anggara-putra.png">
+                <div class="hidden font-bold text-white rounded-full lg:block">New Message</div>
+            </a>
+        </div>
+
+
+
+
+        <div x-show="modal_open" x-cloak class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+            <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75"></div>
+            <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+              <div class="flex items-end justify-center min-h-full p-4 text-center sm:items-center sm:p-0">
+                <div class="relative overflow-hidden text-left transition-all transform bg-white shadow-xl rounded-2xl sm:my-8 sm:w-full sm:max-w-lg">
+                  <div @click.away="modal_open = false" class="px-4 pt-5 pb-4 bg-white sm:p-6 sm:pb-4">
+
+{% include 'a_inbox/form_searchuser.html' %}
+                        
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+{% include 'a_inbox/my_conversations.html' %}
+
+
+    </div>
+ 
+{% include 'a_inbox/conversation.html' %}
+
+</inbox>
+
+
+<script>
+    function scrollToBottom() {
+            const container = document.getElementById('conversation');
+            container.scrollTop = container.scrollHeight;
+        }
+
+    window.onload = function() {
+        scrollToBottom();
+    };
+</script>
+
+
+
+{% endblock content %}
+    
