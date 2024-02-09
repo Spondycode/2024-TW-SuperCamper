@@ -1,0 +1,38 @@
+<div x-show="modal_open" x-cloak class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75"></div>
+    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+      <div class="flex items-end justify-center min-h-full p-4 text-center sm:items-center sm:p-0">
+        <div class="relative overflow-hidden text-left transition-all transform bg-white shadow-xl rounded-2xl sm:my-8 sm:w-full sm:max-w-lg">
+          <div @click.away="modal_open = false" class="px-4 pt-5 pb-4 bg-white sm:p-6 sm:pb-4">
+
+                <h3 class="mb-4 text-xl font-bold" id="modal-title">
+                    New Message XX
+                </h3>
+                <div id="new-message">
+                    <div class="flex items-center gap-2">
+                        <span class="font-bold">To:</span>
+                        <input class="w-screen p-3 lg:full" placeholder="Search user ..." type="text" name="search_user">
+                    </div>
+                    <div id="search-results" class="block overflow-y-auto h-60">
+                        <ul id="user-list" class="mt-2">
+                            <li>
+                                <a href="" class="flex items-center gap-1 p-2 rounded-lg cursor-pointer hover:bg-zinc-100">
+                                    <img class="object-cover w-10 h-10 mr-1 rounded-full" src="https://img.icons8.com/color/48/cookie-monster.png">
+                                    <div class="font-bold">Pete <span class="text-xs font-normal text-zinc-500">@pete</span></div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="flex items-center gap-1 p-2 rounded-lg cursor-pointer hover:bg-zinc-100">
+                                    <img class="object-cover w-10 h-10 mr-1 rounded-full" src="https://img.icons8.com/color/48/cookie-monster.png">
+                                    <div class="font-bold">Pete <span class="text-xs font-normal text-zinc-500">@pete</span></div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<inbox class="grid grid-cols-5 sm:grid-cols-4 h-[calc(100vh-8rem)] md:h-[calc(100vh-12rem)] shadow-2xl rounded-2xl mx-1 lg:mx-10 xl:mx-48">
+    <div x-data="{ modal_open: false }" class="col-span-1 p-2 overflow-y-auto bg-slate-10 rounded-l-2xl">
+
+        <div class="sticky top-0 z-10 p-0 mb-3 sm:p-4">
+            <a @click="modal_open = true" class="flex items-center justify-center gap-2 text-white bg-indigo-600 rounded-full cursor-pointer h-14 sm:h-16 hover:bg-indigo-700">
+                <img class="h-6 m-auto lg:m-0" src="https://img.icons8.com/external-anggara-glyph-anggara-putra/32/ffffff/external-edit-user-interface-anggara-glyph-anggara-putra.png">
+                <div class="hidden font-bold text-white rounded-full lg:block">New Message</div>
+            </a>
+        </div>
+
+
+
+        <ul id="conversations-list" class="flex flex-col gap-1 mt-2 divide-y" >
+            <li class="relative mt-2 rounded-full sm:rounded-lg sm:mt-0">
+                <a href="" class="flex items-center justify-center lg:justify-normal gap-1 hover:bg-zinc-200 rounded-full sm:rounded-lg p-1.5 sm:p-4 cursor-pointer">
+                    <img class="object-cover rounded-full w-11 h-11 lg:w-10 lg:h-10" src="https://img.icons8.com/color/48/cookie-monster.png">
+                    <div class="hidden ml-1 font-bold lg:block">Pete</div>
+                </a>
+            </li>
+            <li class="relative mt-2 rounded-full sm:rounded-lg sm:mt-0">
+                <a href="" class="flex items-center justify-center lg:justify-normal gap-1 hover:bg-zinc-200 rounded-full sm:rounded-lg p-1.5 sm:p-4 cursor-pointer">
+                    <img class="object-cover rounded-full w-11 h-11 lg:w-10 lg:h-10" src="https://img.icons8.com/small/96/A9A9A9/happy.png">
+                    <div class="hidden ml-1 font-bold lg:block">Butch</div>
+                </a>
+            </li>
+            <li class="relative mt-2 rounded-full sm:rounded-lg sm:mt-0">
+                <a href="" class="flex items-center justify-center lg:justify-normal gap-1 hover:bg-zinc-200 rounded-full sm:rounded-lg p-1.5 sm:p-4 cursor-pointer">
+                    <img class="object-cover rounded-full w-11 h-11 lg:w-10 lg:h-10" src="https://img.icons8.com/doodle/96/lisa-simpson.png">
+                    <div class="hidden ml-1 font-bold lg:block">Loola</div>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+<!-- Include the conversation component in the inbox component. This will allow the conversation component to be displayed in the inbox component. -->
+    {% include 'a_inbox/conversation.html' %}
+
+
+</inbox>
+
+
+<script>
+    function scrollToBottom() {
+            const container = document.getElementById('conversation');
+            container.scrollTop = container.scrollHeight;
+        }
+
+    window.onload = function() {
+        scrollToBottom();
+    };
+</script>
+
+    
+    {% endblock %}
