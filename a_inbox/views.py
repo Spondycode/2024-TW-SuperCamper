@@ -122,7 +122,7 @@ def notify_newmessage(request, conversation_id):
         return HttpResponse("")
     
     
-def notify_inbox(request, conversation_id):
+def notify_inbox(request):
     my_conversations = Conversation.objects.filter(participants=request.user, is_seen=False)
     for c in my_conversations:
         latest_message = c.messages.first()
