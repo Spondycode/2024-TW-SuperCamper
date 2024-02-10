@@ -1,0 +1,14 @@
+<ul id="user-list" class="mt-2">
+    
+    {% for user in users %}
+        
+    <li>
+        <a href="" class="flex items-center gap-1 p-2 rounded-lg cursor-pointer hover:bg-zinc-100">
+            <img class="object-cover w-10 h-10 mr-1 rounded-full" src="https://img.icons8.com/color/48/cookie-monster.png">
+            <div class="font-bold">{{ user.profile.realname }} <span class="text-xs font-normal text-zinc-500">@{{ user.username }}</span></div>
+        </a>
+    </li>
+    {% endfor %}
+        
+
+</ul>

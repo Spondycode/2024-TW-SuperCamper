@@ -1,25 +1,19 @@
 <h3 class="mb-4 text-xl font-bold" id="modal-title">
-    New Message XX
+    New Message
 </h3>
 <div id="new-message">
     <div class="flex items-center gap-2">
         <span class="font-bold">To:</span>
-        <input class="w-screen p-3 lg:full" placeholder="Search user ..." type="text" name="search_user">
+        <input class="w-screen p-3 lg:full" placeholder="Search user ..." type="text" name="search_user"
+        hx-get="{% url 'inbox-searchusers' %}"
+        hx-trigger="keyup changed"
+        hx-target="#search-results"
+        hx-swap="innerHTML"
+        >
     </div>
     <div id="search-results" class="block overflow-y-auto h-60">
-        <ul id="user-list" class="mt-2">
-            <li>
-                <a href="" class="flex items-center gap-1 p-2 rounded-lg cursor-pointer hover:bg-zinc-100">
-                    <img class="object-cover w-10 h-10 mr-1 rounded-full" src="https://img.icons8.com/color/48/cookie-monster.png">
-                    <div class="font-bold">Pete <span class="text-xs font-normal text-zinc-500">@pete</span></div>
-                </a>
-            </li>
-            <li>
-                <a href="" class="flex items-center gap-1 p-2 rounded-lg cursor-pointer hover:bg-zinc-100">
-                    <img class="object-cover w-10 h-10 mr-1 rounded-full" src="https://img.icons8.com/color/48/cookie-monster.png">
-                    <div class="font-bold">Pete <span class="text-xs font-normal text-zinc-500">@pete</span></div>
-                </a>
-            </li>
-        </ul>
+
+
+        
     </div>
 </div>
