@@ -1,14 +1,14 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 
 <div class="">
-  <div class="py-4 bg-slate-200">
-    <h3 class="mb-3 text-2xl font-semibold text-center">
+  <div  class="py-4 bg-slate-200 dark:bg-gray-600">
+    <h3 class="mb-3 text-2xl font-semibold text-center dark:text-yellow-300">
       {{ profile.user }}'s Profile
     </h3>
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 mb-2 lg:grid-cols-2 lg:mb-4">
         <!-- title and image -->
-        <div class="text-center">
+        <div class="text-center dark:text-white">
           {% if profile.image %}
           <img class="mx-auto" src="{{ user.profile.image.url }}" alt="avatar" />
           {% else %}
@@ -16,8 +16,8 @@
           {% endif %}
         </div>
         <!-- Body of profile -->
-        <div class="p-4 text-center lg:text-left">
-          <h4 class="text-2xl">My Camper Story</h4>
+        <div class="p-4 text-center lg:text-left dark:text-white">
+          <h4 class="text-2xl dark:text-sky-200">My Camper Story</h4>
           {% if profile.campermode %}
           <p>Often I go camping in a {{ profile.campermode }}</p>
           {% else %}
@@ -37,9 +37,14 @@
           <p class="py-3 ">
             Super Camper member since - {{ profile.created }}
           </p>
-          <div class="mb-3">{{ profile.user.username }} - {{ profile.nationality }}</div>
-          <span class="p-2 text-white bg-purple-700 rounded-lg">{{ profile.level }}</span>
+          <div class="mb-3">{{ profile.user.username }} Nationality - {{ profile.nationality }}</div>
+          <span class="p-2 text-gray-700 bg-purple-300 rounded-lg">{{ profile.level }}</span>
+          
+
+
         </div>
+
+        
       </div>
     </div>
     <div class="flex justify-around max-w-2xl mx-auto">
@@ -50,18 +55,18 @@
       </p>
       {% else %}
       <a
-        class="border-2 border-yellow-500 btn hover:bg-yellow-500 hover:text-white"
+        class="border-2 border-yellow-500 btn hover:bg-yellow-500 hover:text-white dark:text-white"
         href="{% url 'profile-edit' %}"
         >Edit Profile</a
       >
       <a
-        class="border-2 border-sky-500 btn hover:bg-sky-500 hover:text-white"
+        class="border-2 border-sky-500 btn hover:bg-sky-500 hover:text-white dark:text-white"
         href="{% url 'account_change_password' %}"
         >Password Change</a
       >
       {% endif %}
       <a
-        class="ml-3 border-2 border-blue-500 btn hover:bg-blue-500 hover:text-white"
+        class="ml-3 border-2 border-blue-500 btn hover:bg-blue-500 hover:text-white dark:text-white"
         href="{% url 'home' %}"
         >Home Page</a
       >

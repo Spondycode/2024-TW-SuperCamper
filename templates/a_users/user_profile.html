@@ -39,7 +39,42 @@
           </p>
           <div class="mb-3">{{ profile.user.username }} - {{ profile.nationality }}</div>
           <span class="p-2 text-white bg-purple-700 rounded-lg">{{ profile.level }}</span>
+
+
+          <div x-data="{ modal_open:false }">
+            <div class="px-4 py-2 mb-3 shadow-sm bottom-2 right-2">
+              <a @click="modal_open = true" class="flex items-center justify-center gap-2 mt-3 text-white bg-indigo-300 rounded-full cursor-pointer hover:bg-indigo-700 h-14 w-14">
+                  <img class="h-6 m-auto border-2 lg:m-0" src="https://img.icons8.com/external-anggara-glyph-anggara-putra/32/ffffff/external-edit-user-interface-anggara-glyph-anggara-putra.png">
+              </a>
+          </div>
+          
+          <div x-show="modal_open" x-cloak class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+              <div x-show="modal_open" x-cloak class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                  <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75"></div>
+                  <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+                    <div class="flex items-end justify-center min-h-full p-4 text-center sm:items-center sm:p-0">
+                      <div class="relative overflow-hidden text-left transition-all transform bg-white shadow-xl rounded-2xl sm:my-8 sm:w-full sm:max-w-lg">
+                        <div @click.away="modal_open = false" class="px-4 pt-5 pb-4 bg-white sm:p-6 sm:pb-4">
+
+                          {% include 'a_inbox/form_newmessage.html' with recipient=profile.user %}
+          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+          </div>
+
+
+
+
+
+
         </div>
+
+
+
       </div>
     </div>
     <div class="flex justify-around max-w-2xl mx-auto">

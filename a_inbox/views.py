@@ -78,3 +78,30 @@ def new_message(request, recipient_id):
         "new_message_form": new_message_form,
     }
     return render(request, "a_inbox/form_newmessage.html", context)
+
+
+@login_required
+def new_reply(request, conversation_id):
+    conversation = get_object_or_404(Conversation, id=conversation_id)
+    new_message_form = InboxNewMessageForm()
+    my_conversations = request.user.conversations.all()
+    conversation = get_object_or_404(my_conversations, id=conversation_id)
+    
+    if request.method == "POST":
+        form = InboxNewMessageForm(request.POST)
+        if form.is_valid():
+            message = form.save(commit=False)
+            message.sender = request.user
+            message.conversation = conversation
+            message.save()
+            conversation.lastmessage_created = timezone.now()
+            conversation.save()
+            return redirect("inbox", conversation.id)
+            
+    
+    context = {
+        "conversation": conversation,
+        "new_message_form": new_message_form,
+    }
+    return render(request, "a_inbox/form_newreply.html", context)
+    

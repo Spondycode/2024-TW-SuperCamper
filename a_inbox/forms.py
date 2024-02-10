@@ -7,7 +7,7 @@ class InboxNewMessageForm(ModelForm):
         model = InboxMessage
         fields = ['body']
         labels = {
-            'body': 'Your message:',
+            'body': '',
         }
         widgets = {
             'body': forms.Textarea(attrs={'rows': 4, 'placeholder': 'Type your message here...'}),

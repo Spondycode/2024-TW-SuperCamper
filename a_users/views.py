@@ -9,6 +9,7 @@ from django.http import Http404
 # from django.contrib.auth.models import User
 from django.contrib.auth.models import User
 from django.urls import reverse
+from a_inbox.forms import InboxNewMessageForm
 
 
 
@@ -35,9 +36,13 @@ def user_profile_view(request, username):
         user = User.objects.get(username=username)
         plots = Plot.objects.filter(owner=user)  # Fetch plots created by the logged in user
         profile = user.profile
+        
+        new_message_form = InboxNewMessageForm() # form to send a message to the user from the profile page
+        
         context = {
             "plots": plots,
             "profile": profile,
+            "new_message_form": new_message_form,
         }
         return render(request, "a_users/user_profile.html", context)
     except User.DoesNotExist:
@@ -71,13 +76,6 @@ def profile_edit_view(request):
 
 
 
-
-
-
-
-
-    
-    
     #create a view to create a profile
 def profile_create_view(request):  # Create a new profile
     if request.user.is_authenticated:

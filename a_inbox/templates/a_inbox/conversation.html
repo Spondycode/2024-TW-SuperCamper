@@ -11,7 +11,7 @@ _="on load wait for 5ms then remove .opacity-0">
     {% for participant in conversation.participants.all %}
     {% if participant != request.user %}
     <a href="{% url 'user-profile' participant.username %}">
-        <!-- <img class="object-cover w-24 h-24 mb-4 rounded-full" src="{{ user.profile.image.url }}" /> -->
+        
     </a>
     <div class="max-w-md p-10 text-center">
         <h1 class="text-lg">{{ participant.profile.realname }}</h1>
@@ -46,11 +46,15 @@ _="on load wait for 5ms then remove .opacity-0">
 </ul>
 
 <div class="sticky bottom-0 flex px-4 pt-6 pb-10 bg-white z-1 sm:px-10">
-    <a href="" class="flex items-center gap-2 px-6 py-3 pr-8 text-white bg-gray-800 rounded-full cursor-pointer hover:bg-indigo-600">
+    <a class="flex items-center gap-2 px-6 py-3 pr-8 text-white bg-gray-800 rounded-full cursor-pointer hover:bg-indigo-600"
+    hx-get="{% url 'inbox-newreply' conversation.id %}"
+    hx-target="this"
+    hx-swap="outerHTML scroll:#conversation:bottom">
         <img class="h-6" src="https://img.icons8.com/material/96/ffffff/reply-arrow--v1.png">
         <div class="text-white rounded-full">Reply</div>
     </a>
 </div>
+
 {% else %}
 <div class="flex items-center justify-center h-full text-center text-gray-500 -mt-t">Select a conversation or create a new message</div>
 
