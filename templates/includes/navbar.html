@@ -43,8 +43,13 @@
                     class="block py-2 pl-3 pr-4 text-center text-purple-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Profile</a>
                 </li>
 
-                <li>
+                <li class="relative">
                     <!-- inbox -->
+                    <div class="absolute right-0 top-2"
+                    hx-get="{% url 'notify-inbox' %}"
+                    hx-trigger="load"
+                    hx-target="this"
+                    hx-swap="innerHTML" ></div>
                     <a href="{% url 'inbox' %}"
                     class="block py-2 pl-3 pr-4 text-center text-purple-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Inbox</a>
                 </li>
