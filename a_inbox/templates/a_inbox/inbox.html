@@ -13,27 +13,25 @@
         </div>
 
 
+        <div x-show="modal_open" x-cloak class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+            <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75"></div>
+            <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+              <div class="flex items-end justify-center min-h-full p-4 text-center sm:items-center sm:p-0">
+                <div class="relative overflow-hidden text-left transition-all transform bg-white shadow-xl rounded-2xl sm:my-8 sm:w-full sm:max-w-lg">
+                  <div @click.away="modal_open = false" class="px-4 pt-5 pb-4 bg-white sm:p-6 sm:pb-4">
 
-        <ul id="conversations-list" class="flex flex-col gap-1 mt-2 divide-y" >
-            <li class="relative mt-2 rounded-full sm:rounded-lg sm:mt-0">
-                <a href="" class="flex items-center justify-center lg:justify-normal gap-1 hover:bg-zinc-200 rounded-full sm:rounded-lg p-1.5 sm:p-4 cursor-pointer">
-                    <img class="object-cover rounded-full w-11 h-11 lg:w-10 lg:h-10" src="https://img.icons8.com/color/48/cookie-monster.png">
-                    <div class="hidden ml-1 font-bold lg:block">Pete</div>
-                </a>
-            </li>
-            <li class="relative mt-2 rounded-full sm:rounded-lg sm:mt-0">
-                <a href="" class="flex items-center justify-center lg:justify-normal gap-1 hover:bg-zinc-200 rounded-full sm:rounded-lg p-1.5 sm:p-4 cursor-pointer">
-                    <img class="object-cover rounded-full w-11 h-11 lg:w-10 lg:h-10" src="https://img.icons8.com/small/96/A9A9A9/happy.png">
-                    <div class="hidden ml-1 font-bold lg:block">Butch</div>
-                </a>
-            </li>
-            <li class="relative mt-2 rounded-full sm:rounded-lg sm:mt-0">
-                <a href="" class="flex items-center justify-center lg:justify-normal gap-1 hover:bg-zinc-200 rounded-full sm:rounded-lg p-1.5 sm:p-4 cursor-pointer">
-                    <img class="object-cover rounded-full w-11 h-11 lg:w-10 lg:h-10" src="https://img.icons8.com/doodle/96/lisa-simpson.png">
-                    <div class="hidden ml-1 font-bold lg:block">Loola</div>
-                </a>
-            </li>
-        </ul>
+                    {% include 'a_inbox/form_searchuser.html' %}
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+{% include 'a_inbox/my_conversations.html' %}
+ 
 
     </div>
 <!-- Include the conversation component in the inbox component. This will allow the conversation component to be displayed in the inbox component. -->
