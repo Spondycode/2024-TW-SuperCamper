@@ -3,25 +3,27 @@ Django settings for a_core project.
 """
 
 from pathlib import Path
-import environ
+from environ import Env
 
 
-env = environ.Env(
+env = Env(
 # set casting, default value
 DEBUG=(bool, False))
 # reading .env file
-environ.Env.read_env()
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
+Env.read_env()
+ENVIRONMENT = env('ENVIRONMENT', default='development')
 
 SECRET_KEY = env('SECRET_KEY')
-ENCRYPT_KEY = b'5HL02LMc-vh3yR-OFMm6XDL8kbswTR_DacQ63rw6TAI='
-DEBUG = True
+ENCRYPT_KEY = env('ENCRYPT_KEY')
+if ENVIRONMENT == 'development':
+    DEBUG = True
+else:
+    DEBUG = False
 
 ALLOWED_HOSTS = []
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Application definition
 
@@ -41,6 +43,7 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "django.contrib.sites",
+    "admin_honeypot",
     "django_cleanup.apps.CleanupConfig",
     
     "tailwind",
@@ -167,4 +170,4 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 
-ACCOUNT_USERNAME_BLACKLIST = ['admin', 'superuser', 'super', 'user', 'staff', 'staffuser', 'staff_user', 'plot', 'category', 'profile', 'profiles', 'userprofile', 'userprofiles', 'users', 'inbox']
+ACCOUNT_USERNAME_BLACKLIST = ['admin', 'superuser', 'super', 'user', 'staff', 'staffuser', 'staff_user', 'plot', 'category', 'profile', 'profiles', 'userprofile', 'userprofiles', 'users', 'inbox', 'bossman']
