@@ -17,6 +17,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 SECRET_KEY = env('SECRET_KEY')
+ENCRYPT_KEY = b'5HL02LMc-vh3yR-OFMm6XDL8kbswTR_DacQ63rw6TAI='
 DEBUG = True
 
 ALLOWED_HOSTS = []
