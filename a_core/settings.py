@@ -16,12 +16,19 @@ ENVIRONMENT = env('ENVIRONMENT', default='development')
 
 SECRET_KEY = env('SECRET_KEY')
 ENCRYPT_KEY = env('ENCRYPT_KEY')
-if ENVIRONMENT == 'production':
+
+if ENVIRONMENT == 'development':
     DEBUG = True
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = [ '*' ]
+ALLOWED_HOSTS = [ 
+                 'localhost',
+                 '127.0.0.1:8000',
+                 '2024-supercamper.up.railway.app/'
+                 ]
+
+CSRF_TRUSTED_ORIGINS = [ 'https://2024-supercamper.up.railway.app/' ]
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
