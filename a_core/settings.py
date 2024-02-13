@@ -24,9 +24,8 @@ else:
 
 ALLOWED_HOSTS = [ 
                  'localhost',
-                 '127.0.0.1:8000',
-                 '2024-supercamper.up.railway.app/'
-                 ]
+                 '127.0.0.1',
+                ]
 
 CSRF_TRUSTED_ORIGINS = [ 'https://2024-supercamper.up.railway.app/' ]
 
