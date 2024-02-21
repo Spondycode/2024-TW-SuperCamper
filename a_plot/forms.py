@@ -29,6 +29,7 @@ class PlotAddForm(ModelForm):
             'plot': forms.TextInput(attrs={'placeholder': 'Plot ID/number or None...'}),
             'what3words': forms.TextInput(attrs={'placeholder': 'Add a what3words URL...'}),
             'campsite': forms.TextInput(attrs={'placeholder': 'Campsite name or None...'}),
+            'plot_image': forms.FileInput(),
         }
 
 
