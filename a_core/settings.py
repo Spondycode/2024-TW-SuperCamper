@@ -9,10 +9,10 @@ from environ import Env
 
 env = Env()
 # set casting, default value
-DEBUG=(bool, False))
+# DEBUG=(bool, False))
 # reading .env file
 Env.read_env()
-ENVIRONMENT = env('ENVIRONMENT', default='development')
+ENVIRONMENT = env('ENVIRONMENT', default='production')
 
 SECRET_KEY = env('SECRET_KEY')
 ENCRYPT_KEY = env('ENCRYPT_KEY')
