@@ -7,9 +7,10 @@ import dj_database_url
 from environ import Env
 
 
-env = Env()
+
+env = Env(
 # set casting, default value
-# DEBUG=(bool, False))
+DEBUG=(bool, False))
 # reading .env file
 Env.read_env()
 ENVIRONMENT = env('ENVIRONMENT', default='production')
@@ -28,7 +29,7 @@ ALLOWED_HOSTS = [
                  'supercamper.onrender.com/'
                 ]
 
-# CSRF_TRUSTED_ORIGINS = [ 'https://supercamper.up.railway.app/' ]
+CSRF_TRUSTED_ORIGINS = [ 'https://supercamper.onrender.com/' ]
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,9 +43,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "cloudinary_storage",
+    "cloudinary",
     "a_plot.apps.APlotConfig",
     "a_users.apps.AUsersConfig",
     "a_inbox.apps.AInboxConfig",
+    
     
     "django_htmx",
     "allauth",
@@ -125,7 +129,7 @@ DATABASES = {
     }
 }
 
-POSTGRES_LOCALLY = False
+POSTGRES_LOCALLY = True
 if ENVIRONMENT == 'production' or POSTGRES_LOCALLY == True:
     DATABASES['default'] = dj_database_url.parse(env('DATABASE_URL'))
 
@@ -168,10 +172,20 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-BASE_DIR = Path(__file__).resolve().parent.parent
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+if ENVIRONMENT == 'production' or POSTGRES_LOCALLY:
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+else:
+    MEDIA_ROOT = BASE_DIR / "media" 
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': env('CLOUD_NAME'),
+    'API_KEY': env('CLOUD_API_KEY'),
+    'API_SECRET': env('CLOUD_API_SECRET')
+}
 
 
 # Default primary key field type
