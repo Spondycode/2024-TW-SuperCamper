@@ -2,24 +2,24 @@
 {% load static %}
 {% block content %}
 <p class="py-4 text-center lg:hidden dark:bg-yellow-600 dark:text-white">Scroll down for help with filling the form</p>
-<div class="flex flex-col gap-2 mx-5 mt-3">
+<div class="grid-cols-3 gap-2 mx-5 mt-3 ">
 
-    <div class="flex flex-col lg:flex-row">
+    <div class="grid-cols-1 lg:grid-cols-2">
         <div class="pb-4 ">
                 <div class="row row-cols-md">
-                    <div class="mb-4 ml-3 shadow card px-md-5 bg-sky-200 dark:bg-sky-500">
-                        <h3 class="text-2xl font-semibold text-center">Add Your Plot</h3>
+                    <div class="p-2 mb-4 ml-3 shadow card px-md-5 bg-sky-200 dark:bg-sky-500">
+                        <h3 class="text-2xl font-semibold text-center text-blue-800">Add Your Plot</h3>
 
                         {% if submitted %}
                         Your Plot was submitted successfully
                         {% else %}
 
-                        <form class="space-y-4 " method="POST" enctype="multipart/form-data">
+                        <form class="flex flex-col space-y-4 " method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
                             {{ form.as_p }}
                             <div class="flex justify-around gap-2 my-4 ">
                                 <input type="submit" value="Submit" class="text-white bg-blue-700 btn ">
-                                <a class="bg-gray-400 btn" href="{{ request.META.HTTP_REFERER }}">Cancel</a>
+                                <a class="flex items-center p-2 bg-gray-400 rounded-md" href="{{ request.META.HTTP_REFERER }}">Cancel</a>
                             </div>
                         </form>
                         {% endif %}
@@ -29,7 +29,7 @@
 
 
         <div class="p-6">
-            <div class="flex flex-col gap-2 dark:text-white">
+            <div class="grid-cols-2 gap-2 dark:text-white">
                     <h4 class="pb-2 text-2xl font-semibold text-center dark:text-yellow-50">How to Fill in the Form</h4>
                     <p><strong>Title: </strong>Whatever you want to call the plot</p>
                     <p><strong>Description: </strong>Add the details of what it is you like about the plot. Such as if
@@ -48,7 +48,7 @@
     <p>Especially for the non campsite spots. If you don't add the What3Words address, no one else will be able to find it and you might not find it again either.</p>
 </div>
 
-                    <div class="my-5 text-center"><a class="text-white bg-blue-700 btn"
+                    <div class="my-5 text-center"><a class="p-3 text-white bg-blue-700 rounded-md"
                             href="https://what3words.com/products/what3words-app">Get the App
                         </a></div>
                     <p><strong>Campsite: </strong>What is the name of the campsite</p>

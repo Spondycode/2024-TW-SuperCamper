@@ -17,7 +17,7 @@ ENVIRONMENT = env('ENVIRONMENT', default='development')
 SECRET_KEY = env('SECRET_KEY')
 ENCRYPT_KEY = env('ENCRYPT_KEY')
 
-if ENVIRONMENT == 'development':
+if ENVIRONMENT == 'production':
     DEBUG = True
 else:
     DEBUG = False
@@ -26,6 +26,12 @@ ALLOWED_HOSTS = [
                  'localhost',
                  '127.0.0.1',
                 ]
+
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+    'localhost:8000'
+]
 
 CSRF_TRUSTED_ORIGINS = [ 'https://2024-supercamper.up.railway.app/' ]
 
