@@ -33,14 +33,14 @@
                 {% if not user.profile.level == 'Banned' %}
                 <li>
                     <a href="{% url 'add-plot' %}"
-                    class="block py-2 pl-3 pr-4 text-center text-purple-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Add Plot</a>
+                    class="block py-4 pl-3 pr-4 text-center text-purple-700 hover:bg-yellow-500 lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Add Plot</a>
                 </li>
                 {% endif %}
                     
                 <li>
                     <!-- profile -->
                     <a href="{% url 'profile' %}"
-                    class="block py-2 pl-3 pr-4 text-center text-purple-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Profile</a>
+                    class="block py-4 pl-3 pr-4 text-center text-purple-700 hover:bg-yellow-500 lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Profile</a>
                 </li>
 
                 <li class="relative">
@@ -51,23 +51,23 @@
                     hx-target="this"
                     hx-swap="innerHTML" ></div>
                     <a href="{% url 'inbox' %}"
-                    class="block py-2 pl-3 pr-4 text-center text-purple-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Inbox</a>
+                    class="block py-4 pl-3 pr-4 text-center text-purple-700 hover:bg-yellow-500 lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Inbox</a>
                 </li>
 
                 <li>
                     <!-- Logout -->
                     <a href="{% url 'account_logout' %}"
-                    class="block py-2 pl-3 pr-4 text-center text-purple-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Logout</a>
+                    class="block py-4 pl-3 pr-4 text-center text-purple-700 hover:bg-yellow-500 lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Logout</a>
                 </li>
                 {% else %}
                 <li>
                     <!-- Login -->
                     <a href="{% url 'account_login' %}"
-                    class="block py-2 pl-3 pr-4 text-center text-purple-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Login</a>
+                    class="block py-4 pl-3 pr-4 text-center text-purple-700 hover:bg-yellow-500 lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Login</a>
                 </li>
                 <li>
                     <a href="{% url 'account_signup' %}"
-                    class="block py-2 pl-3 pr-4 text-center text-purple-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Register</a>
+                    class="block py-4 pl-3 pr-4 text-center text-purple-700 hover:bg-yellow-500 lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Register</a>
                 </li>
                 {% endif %}
                 
@@ -76,7 +76,7 @@
                 
                 <li>
                     <a href="{% url 'check-reports' %}"
-                    class="block py-2 pl-3 pr-4 text-center text-purple-900 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Reports</a>
+                    class="block py-4 pl-3 pr-4 text-center text-purple-900 hover:bg-yellow-500 lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Reports</a>
                 </li>
                 {% endif %}
             </ul>

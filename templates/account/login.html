@@ -7,7 +7,7 @@
 {% block content %}
 
 
-    <div class="max-w-xl m-4 mx-auto card bg-sky-200">
+    <div class="max-w-xl p-3 m-4 mx-auto border border-gray-300 card bg-sky-200">
         
         <h1 class="text-2xl font-semibold text-center">Sign In</h1>
         <p class="p-4">
@@ -28,7 +28,7 @@
             {% endslot %}
             {% slot actions %}
                 {% element button type="submit" tags="prominent,login" %}
-                    <p class="text-white bg-blue-600 shadow-lg btn hover:bg-blue-700">Sign In</p>
+                    <p class="p-2 m-2 text-white bg-blue-600 rounded-md shadow-lg btn hover:bg-blue-700">Sign In</p>
                 {% endelement %}
             {% endslot %}
         {% endelement %}

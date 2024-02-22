@@ -54,7 +54,6 @@ INSTALLED_APPS = [
     "django_cleanup.apps.CleanupConfig",
     
     "tailwind",
-    "theme",
     "django_browser_reload",
 ]
 

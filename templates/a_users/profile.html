@@ -55,18 +55,18 @@
       </p>
       {% else %}
       <a
-        class="border-2 border-yellow-500 btn hover:bg-yellow-500 hover:text-white dark:text-white"
+        class="p-2 border-2 border-yellow-500 rounded-md btn hover:bg-yellow-500 hover:text-white dark:text-white"
         href="{% url 'profile-edit' %}"
         >Edit Profile</a
       >
       <a
-        class="border-2 border-sky-500 btn hover:bg-sky-500 hover:text-white dark:text-white"
+        class="p-2 border-2 rounded-md border-sky-500 btn hover:bg-sky-500 hover:text-white dark:text-white"
         href="{% url 'account_change_password' %}"
         >Password Change</a
       >
       {% endif %}
       <a
-        class="ml-3 border-2 border-blue-500 btn hover:bg-blue-500 hover:text-white dark:text-white"
+        class="p-2 ml-3 border-2 border-blue-500 rounded-md btn hover:bg-blue-500 hover:text-white dark:text-white"
         href="{% url 'home' %}"
         >Home Page</a
       >

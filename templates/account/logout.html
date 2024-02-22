@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% load allauth i18n %}
 {% block head_title %}
-    {% trans "Sign Out" %}
+    <div class="text-blue-800">{% trans "Sign Out" %}</div>
 {% endblock head_title %}
 {% block content %}
 <div class="flex flex-col items-center max-w-xl gap-3 m-4 mx-auto card bg-sky-200">
     
     <h1 class="mb-4 text-2xl font-semibold text-center"> Sign Out</h1>
     <hr class="border border-purple-600 border-double border-3">
-    <p>{% trans 'Are you sure you want to sign out?' %}</p>
+    <p class="text-blue-800">{% trans 'Are you sure you want to sign out?' %}</p>
     {% url 'account_logout' as action_url %}
     {% element form method="post" action=action_url no_visible_fields=True %}
     {% slot body %}
@@ -21,7 +21,7 @@
     {% endslot %}
     {% slot actions %}
     {% element button type="submit" %}
-    <p class="text-white bg-blue-600 shadow-lg btn hover:bg-blue-700">Sign Out</p>
+    <p class="p-2 text-blue-800 rounded-md hover:text-white">Sign Out</p>
     {% endelement %}
     
     {% endslot %}

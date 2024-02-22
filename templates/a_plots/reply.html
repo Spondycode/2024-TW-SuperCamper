@@ -21,7 +21,7 @@
         {% if user.is_authenticated and reply.author == user%}
 
         <div class="flex flex-row-reverse">
-            <a class="mb-5 border-2 border-red-400 btn hover:bg-red-600 text-end hover:text-white" href="{% url 'delete-reply' reply.id %}">Delete Reply</a>
+            <a class="p-2 mb-5 text-sm border-2 border-red-400 rounded-md btn hover:bg-red-600 text-end hover:text-white" href="{% url 'delete-reply' reply.id %}">Delete Reply</a>
         </div>
         {% endif %}
 
