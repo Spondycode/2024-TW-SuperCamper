@@ -1,15 +1,17 @@
-{% load static tailwind_tags %}
+<!-- {% load static tailwind_tags %} -->
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
     <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %} ">
     <title>{{ title }}</title>
-    {% tailwind_css %}
 </head>
 <body class="dark:bg-slate-500">
     {% include 'includes/navbar.html' %}
@@ -21,4 +23,4 @@
         {% include 'includes/footer.html' %}
     </div>
 </body>
-</html>
+</html> 
