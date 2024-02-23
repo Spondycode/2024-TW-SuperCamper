@@ -27,7 +27,7 @@ ALLOWED_HOSTS = [
                  '127.0.0.1',
                 ]
 
-CSRF_TRUSTED_ORIGINS = [ 'https://2024-supercamper.up.railway.app/' ]
+# CSRF_TRUSTED_ORIGINS = [ 'https://2024-supercamper.up.railway.app/' ]
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -54,7 +54,6 @@ INSTALLED_APPS = [
     "django_cleanup.apps.CleanupConfig",
     
     "tailwind",
-    "theme",
     "django_browser_reload",
 ]
 

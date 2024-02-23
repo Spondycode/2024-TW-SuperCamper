@@ -6,8 +6,8 @@
     
 <div class="w-2/3 mx-auto mt-5 shadow card px-md-5 bg-sky-200 dark:bg-sky-500">
             <div class="text-center ">
-                <h1 class="text-2xl font-semibold">Complete Your Profile</h1>
-                <p class="mb-4">Put in the basics of who you are. Nothing personal, just the basics about you and your camping
+                <h1 class="text-2xl font-semibold text-blue-800">Complete Your Profile</h1>
+                <p class="mb-4 text-blue-800">Put in the basics of who you are. Nothing personal, just the basics about you and your camping
                     experiences</p>
             </div>
             <form method="POST" enctype="multipart/form-data">
@@ -15,8 +15,8 @@
                 {{ form.as_p }}
 
                 <div class="flex justify-between max-w-lg mx-auto my-4">
-                    <button type="submit" class="text-white bg-blue-600 btn">Submit</button>
-                    <a class="text-white bg-gray-400 btn" href="{{ request.META.HTTP_REFERER }}">Skip</a>
+                    <button type="submit" class="p-4 text-white bg-blue-600 rounded-md">Submit</button>
+                    <a class="p-4 text-white bg-gray-400 rounded-md" href="{{ request.META.HTTP_REFERER }}">Skip</a>
                 
                 </div>
             </form>

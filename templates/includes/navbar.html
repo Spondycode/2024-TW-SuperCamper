@@ -3,7 +3,7 @@
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
         <a href="{% url 'home' %}" class="flex items-center">
             <img src="{% static 'images/tent-logo.png' %}" class="h-10 mr-5 sm:h-9" alt="Super Camper Logo">
-            <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Super Camper - {{ user.username }}</span>
+            <span class="self-center text-xl font-semibold text-purple-700 whitespace-nowrap dark:text-white">Super Camper - {{ user.username }}</span>
         </a>
         <div class="flex items-center lg:order-2">
             <div class="hidden mt-2 mr-4 sm-inline-block">
@@ -25,7 +25,7 @@
 			</button>
         </div>
         <div class="items-center justify-between w-full md:flex md:w-auto md:order-1" id="mobile-menu-2">
-            <ul class="flex flex-col mt-4 font-medium md:flex-row md:space-x-8 md:mt-0">
+            <ul class="flex flex-col mt-4 font-medium md:flex-row md:space-x-8 md:mt-0 ">
                 
                 {% if user.is_authenticated %}
                     
@@ -33,16 +33,16 @@
                 {% if not user.profile.level == 'Banned' %}
                 <li>
                     <a href="{% url 'add-plot' %}"
-                    class="block py-2 pl-3 pr-4 text-center text-purple-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Add Plot</a>
+                    class="block py-2 pl-3 pr-4 text-center text-purple-800 hover:bg-gray-50 lg:hover:bg-yellow-300 lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Add Plot</a>
                 </li>
                 {% endif %}
                     
                 <li>
                     <!-- profile -->
                     <a href="{% url 'profile' %}"
-                    class="block py-2 pl-3 pr-4 text-center text-purple-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Profile</a>
+                    class="block py-2 pl-3 pr-4 text-center text-purple-800 hover:bg-gray-50 lg:hover:bg-yellow-300 lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Profile</a>
                 </li>
-
+                {% if not user.profile.level == 'Banned' %}
                 <li class="relative">
                     <!-- inbox -->
                     <div class="absolute right-0 top-2"
@@ -51,23 +51,23 @@
                     hx-target="this"
                     hx-swap="innerHTML" ></div>
                     <a href="{% url 'inbox' %}"
-                    class="block py-2 pl-3 pr-4 text-center text-purple-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Inbox</a>
+                    class="block py-2 pl-3 pr-4 text-center text-purple-800 hover:bg-gray-50 lg:hover:bg-yellow-300 lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Inbox</a>
                 </li>
-
+                {% endif %}
                 <li>
                     <!-- Logout -->
                     <a href="{% url 'account_logout' %}"
-                    class="block py-2 pl-3 pr-4 text-center text-purple-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Logout</a>
+                    class="block py-2 pl-3 pr-4 text-center text-purple-800 hover:bg-gray-50 lg:hover:bg-yellow-300 lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Logout</a>
                 </li>
                 {% else %}
                 <li>
                     <!-- Login -->
                     <a href="{% url 'account_login' %}"
-                    class="block py-2 pl-3 pr-4 text-center text-purple-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Login</a>
+                    class="block py-2 pl-3 pr-4 text-center text-purple-800 hover:bg-gray-50 lg:hover:bg-yellow-300 lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Login</a>
                 </li>
                 <li>
                     <a href="{% url 'account_signup' %}"
-                    class="block py-2 pl-3 pr-4 text-center text-purple-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Register</a>
+                    class="block py-2 pl-3 pr-4 text-center text-purple-800 hover:bg-gray-50 lg:hover:bg-yellow-300 lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Register</a>
                 </li>
                 {% endif %}
                 
@@ -76,7 +76,7 @@
                 
                 <li>
                     <a href="{% url 'check-reports' %}"
-                    class="block py-2 pl-3 pr-4 text-center text-purple-900 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Reports</a>
+                    class="block py-2 pl-3 pr-4 text-center text-purple-800 hover:bg-gray-50 lg:hover:bg-yellow-300 lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-purple-700 dark:hover:text-white lg:dark:hover:bg-transparent">Reports</a>
                 </li>
                 {% endif %}
             </ul>

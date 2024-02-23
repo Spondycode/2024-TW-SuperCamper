@@ -322,7 +322,7 @@ def official_plots_view(request):
     if request.user.is_authenticated:
         plots = Plot.objects.filter(categories__icontains="Official")  # Fetch plots with category "Official"
         
-        paginator = Paginator(plots, 1)  # Show 7 plots per page
+        paginator = Paginator(plots, 12)  # Show 7 plots per page
         page = int(request.GET.get('page', 1))
         plots = paginator.page(page)
         
