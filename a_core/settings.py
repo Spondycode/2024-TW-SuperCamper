@@ -57,7 +57,7 @@ INSTALLED_APPS = [
     "django_cleanup.apps.CleanupConfig",
     
     "tailwind",
-    "django_browser_reload",
+    # "django_browser_reload",
 ]
 
 SITE_ID = 1
