@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 
 <div class="">
-  <div  class="py-4 bg-slate-200 dark:bg-gray-600">
+  <div  class="py-4 border-b-2 border-blue-400 shadow bg-slate-200 dark:bg-gray-600">
     <h3 class="mb-3 text-2xl font-semibold text-center dark:text-yellow-300">
       {{ profile.user }}'s Profile
     </h3>
@@ -37,8 +37,8 @@
           <p class="py-3 ">
             Super Camper member since - {{ profile.created }}
           </p>
-          <div class="mb-3">{{ profile.user.username }} Nationality - {{ profile.nationality }}</div>
-          <span class="p-2 text-gray-700 bg-purple-300 rounded-lg">{{ profile.level }}</span>
+          <div class="mb-6">{{ profile.user.username }} Nationality - {{ profile.nationality }}</div>
+          <span class="p-2 mt-4 text-gray-700 bg-purple-300 rounded-lg">{{ profile.level }}</span>
           
 
 
@@ -47,26 +47,26 @@
         
       </div>
     </div>
-    <div class="flex justify-around max-w-2xl mx-auto">
+    <div class="flex flex-col justify-between max-w-5xl mx-auto space-y-4 lg:flex-row">
       {% if profile.level == 'Banned' %}
-      <p class="p-6 text-white bg-red-600 rounded-lg">
+      <p class="max-w-3xl p-6 mx-auto text-white bg-red-600 rounded-lg">
         You can not post here due to previous posts made which were reported to
         the Admin. Send an email to the Admin to discuss this if you think a mistake was made.
       </p>
       {% else %}
       <a
-        class="p-3 border-2 border-yellow-500 rounded-md btn hover:bg-yellow-500 hover:text-white dark:text-white"
+        class="flex items-center justify-center p-3 mx-4 border-2 border-blue-500 rounded-md hover:bg-blue-500 hover:text-white dark:text-white"
         href="{% url 'profile-edit' %}"
         >Edit Profile</a
       >
       <a
-        class="p-3 border-2 rounded-md border-sky-500 btn hover:bg-sky-500 hover:text-white dark:text-white"
+        class="flex items-center justify-center p-3 mx-4 border-2 border-blue-500 rounded-md hover:bg-blue-500 hover:text-white dark:text-white"
         href="{% url 'account_change_password' %}"
         >Password Change</a
       >
       {% endif %}
       <a
-        class="p-8 ml-3 border-2 border-blue-500 rounded-md btn hover:bg-blue-500 hover:text-white dark:text-white"
+        class="flex items-center justify-center p-3 mx-4 border-2 border-blue-500 rounded-md hover:bg-blue-500 hover:text-white dark:text-white"
         href="{% url 'home' %}"
         >Home</a
       >

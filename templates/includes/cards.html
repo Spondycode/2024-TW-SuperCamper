@@ -84,7 +84,7 @@
         <div class="flex justify-between m-4 ">
             
             {% if user in plot.likes.all %}
-            <p class="px-3 text-white bg-blue-600 border-2 rounded-md hover:shadow-md">You liked this</p>
+            <p class="px-3 text-blue-800 hover:shadow-md">You liked this 💙 💙</p><span></span>
             {% else %}
             <a class="p-3 border-2 border-yellow-500 rounded-md hover:bg-yellow-500 hover:shadow-md" href="{% url 'like-plot' plot.id %}">Add a Like</a>
             {% endif %}
