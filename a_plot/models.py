@@ -1,6 +1,7 @@
 from django.db import models
 import uuid
 from django.contrib.auth.models import User
+from django_resized import ResizedImageField
 # from django.templatetags.static import static
 
 
@@ -115,7 +116,7 @@ class Plot(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     season = models.CharField(max_length=100, choices=SEASONS, default="Mid", blank=True, null=True)
-    plot_image = models.ImageField(upload_to="photos/", blank=True, null=True)
+    plot_image = ResizedImageField(size=[600, 600], quality=85, upload_to="photos/", blank=True, null=True)
     plot = models.CharField(max_length=100)
     likes = models.ManyToManyField(User, related_name="likedplots", through="LikedPlot")
     categories = models.CharField(max_length=25, choices=CATEGORIES, default=1)

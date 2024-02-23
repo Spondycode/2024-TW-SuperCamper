@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.templatetags.static import static
+from django_resized import ResizedImageField
 
 
 MODES = (
@@ -33,7 +34,7 @@ LEVELS = (
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to="images/" , null=True, blank=True)
-    realname = models.CharField(max_length=40, null=True, blank=True)
+    realname = ResizedImageField(size=[600, 600], quality=85, max_length=40, null=True, blank=True)
     email = models.EmailField(max_length=254, null=True, unique=True)
     created = models.DateTimeField(auto_now_add=True)
     nationality = models.CharField(max_length=50, null=True, blank=True)

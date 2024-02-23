@@ -23,11 +23,11 @@ else:
     DEBUG = False
 
 ALLOWED_HOSTS = [ 
-                 'localhost',
+                 'localhost:8000',
                  '127.0.0.1',
                 ]
 
-# CSRF_TRUSTED_ORIGINS = [ 'https://2024-supercamper.up.railway.app/' ]
+CSRF_TRUSTED_ORIGINS = [ 'http://localhost:8000' ] # Don't know what to do with this yet
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'cloudinary_storage', #CLOUDINARY
+    'cloudinary',
     "a_plot.apps.APlotConfig",
     "a_users.apps.AUsersConfig",
     "a_inbox.apps.AInboxConfig",
@@ -151,11 +153,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
 LANGUAGE_CODE = "en-us"
-
 TIME_ZONE = "Europe/Paris"
-
 USE_I18N = True
-
 USE_TZ = True
 
 
@@ -163,13 +162,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = "static/"
-STATICFILES_DIRS = [BASE_DIR / 'static']
+STATICFILES_DIRS = [ BASE_DIR / 'static' ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-
 MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+
+if ENVIRONMENT == 'production' or POSTGRES_LOCALLY == True:  # noqa: E712
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+else:
+    MEDIA_ROOT = BASE_DIR / 'media'
+    
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': env('CLOUD_NAME'),
+    'API_KEY': env('CLOUD_API_KEY'),
+    'API_SECRET': env('CLOUD_API_SECRET'),
+}
 
 
 # Default primary key field type
