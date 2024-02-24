@@ -13,7 +13,7 @@
                 <!-- Plot image -->
                 <figure>
                     {% if plot.plot_image %}
-                    <a href="#"><img class="max-w-5xl mx-auto mb-2 " src="{{ plot.plot_image.url }}" alt="Plot Image"></a>
+                    <a href="#"><img class="mx-auto mb-2 w-fit" src="{{ plot.plot_image.url }}" alt="Plot Image"></a>
                     {% else %}
                     <a href="#"><img class="max-w-5xl mx-auto mb-2 " src="{% static 'images/default.jpg' %}" alt="Default image"></a>
                     {% endif %}
