@@ -9,6 +9,7 @@
 
     <div class="flex items-center justify-around">
       <a class="mt-1 text-sm col" href="{% url 'about' %}">About</a>
+      <a class="mt-1 text-sm col" href="{% url 'plot-table' %}">Table View</a>
       {% if user.is_superuser %}
         <a class="text-sm col" href="{% url 'check-reports' %}">Reports</a>
       {% endif %}
