@@ -10,6 +10,7 @@ from django.http import Http404
 from django.contrib.auth.models import User
 from django.urls import reverse
 from a_inbox.forms import InboxNewMessageForm
+from django.core.paginator import Paginator
 
 
 
@@ -18,10 +19,17 @@ from a_inbox.forms import InboxNewMessageForm
 def profile_view(request):
     if request.user.is_authenticated:
         plots = Plot.objects.filter(owner=request.user)  # Fetch plots created by the logged in user
-        profile = request.user.profile  
+        profile = request.user.profile
+        
+        paginator = Paginator(plots, 24)  # Show 12 plots per page
+        page = int(request.GET.get('page', 1))
+        plots = paginator.page(page)
+        
         context = {
             "plots": plots,
             "profile": profile,
+            'page': page,
+            
         }
         return render(request, "a_users/profile.html", context)
     else:
@@ -37,12 +45,17 @@ def user_profile_view(request, username):
         plots = Plot.objects.filter(owner=user)  # Fetch plots created by the logged in user
         profile = user.profile
         
+        paginator = Paginator(plots, 24)  # Show 12 plots per page
+        page = int(request.GET.get('page', 1))
+        plots = paginator.page(page)
+        
         new_message_form = InboxNewMessageForm() # form to send a message to the user from the profile page
         
         context = {
             "plots": plots,
             "profile": profile,
             "new_message_form": new_message_form,
+            "page": page,
         }
         return render(request, "a_users/user_profile.html", context)
     except User.DoesNotExist:

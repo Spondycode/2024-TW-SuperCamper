@@ -66,7 +66,7 @@
                 <div class="mx-3 ">
                     <div class="my-3 ">
                         {% if plot.comments.count %}
-                        <h5 id="commentscount-{{ plot.id }}" class="mt-2 text-xl text-center text-blue-600">
+                        <h5 id="commentscount-{{ plot.id }}" class="mt-2 text-xl text-center text-blue-800">
                             📣 Comments: <span class="">{{ plot.comments.count }}</span>
                         </h5>
                         {% else %}
@@ -77,7 +77,7 @@
 <!-- Likes COUNT -->
 
                     <div>
-                        <h5 class="mb-3 text-xl text-center">
+                        <h5 class="mb-3 text-xl text-center text-blue-800">
                             
                             {% if user in plot.likes.all %}
                             💙 Plot Liked: {{ plot.likes.count }}
@@ -164,10 +164,10 @@
 <hr class="my-10 border-2 border-blue-900 ">
 
 <div class="grid gap-6 mx-4 my-6 lg:grid-cols-4 min-h-96">
-    <div class="h-full border-2 rounded-md">{% include 'includes/plotoftheweek.html' %}</div>
-    <div class="h-full border-2 rounded-md ">{% include 'includes/products.html' %} </div>
-    <div class="h-full border-2 rounded-md">{% include 'includes/languages.html' %}</div>
-    <div class="h-full border-2 rounded-md">{% include 'includes/search.html' %}</div>
+    <div class="h-full rounded-md">{% include 'includes/plotoftheweek.html' %}</div>
+    <div class="h-full rounded-md ">{% include 'includes/products.html' %} </div>
+    <div class="h-full rounded-md">{% include 'includes/languages.html' %}</div>
+    <div class="h-full rounded-md">{% include 'includes/search.html' %}</div>
 </div>
 
 
