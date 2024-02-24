@@ -472,3 +472,12 @@ def delete_reply(request, pk):
         return redirect("show-plot", reply.parent_comment.parent_plot.id)
     
     return render(request, "a_plots/delete_reply.html", context)
+
+
+@login_required
+def plot_table_view(request):
+    plots = Plot.objects.all()
+    context = {
+        "plots": plots,
+    }
+    return render(request, "a_plots/table_view.html", context)

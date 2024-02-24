@@ -29,5 +29,6 @@ urlpatterns = [
     path("report_plot/<pk>/", report_plot_view, name="report-plot"),
     path("check_reports/", check_reports_view, name="check-reports"),
     path("about/", about_view, name="about"),
+    path("plot_table/", plot_table_view, name="plot-table"),
     
 ]
