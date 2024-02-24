@@ -3,14 +3,14 @@
 
 {% block content %}
 
-    <div class="w-2/3 mx-auto mt-5 shadow card px-md-5 bg-sky-200 dark:bg-sky-500">
-        <h1 class="mb-3 text-2xl font-semibold text-center">Edit Plot</h1>
+    <div class="p-4 mx-auto shadow max-w-7xl px-md-5 bg-sky-200 dark:bg-sky-500">
+        <h1 class="mb-3 text-2xl font-semibold text-center text-blue-800">Edit Plot</h1>
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
             <div class="flex justify-around gap-2 my-4 ">
-            <input class="text-white bg-blue-700 btn " type="submit" value="Update Plot Details">
-            <a class="bg-gray-400 btn" href="{{ request.META.HTTP_REFERER }}">Cancel</a>
+            <input class="p-3 text-white bg-blue-700 rounded-md " type="submit" value="Update Plot Details">
+            <a class="p-3 bg-gray-400 rounded-md hover:bg-gray-300" href="{{ request.META.HTTP_REFERER }}">Cancel</a>
             </div>
         </form>
 

@@ -2,11 +2,11 @@
 
 {% block content %}
 
-<div class="w-2/3 mx-auto mt-5 bg-sky-400 card">
+<div class="p-4 mx-auto rounded-md max-w-7xl bg-sky-200">
 
     
         <div class="flex mx-auto">
-            <div class="p-2 m-2 mx-auto shadow bg-sky-200">
+            <div class="p-4 m-2 mx-auto bg-white rounded-md shadow">
                 <h3 class="text-center">{{ plot.title }}</h3>
                 <p class="text-truncate"><strong>Description:</strong> {{ plot.description }}</p>
                 <figure>
@@ -31,8 +31,8 @@
                 <form method='POST'>
                     {% csrf_token %}
                     <div class="flex flex-col gap-2 lg:flex-row lg:justify-around">
-                        <button class="text-white bg-red-700 btn" type="submit">Confirm</button>
-                        <a class="text-center text-white btn bg-slate-500" href="{{ request.META.HTTP_REFERER }}">Cancel</a>
+                        <button class="p-2 text-white bg-blue-700 rounded-md shadow-md" type="submit">Confirm</button>
+                        <a class="p-2 text-center text-white rounded-md bg-slate-500 hover:bg-slate-400" href="{{ request.META.HTTP_REFERER }}">Cancel</a>
                     </div>
                 </form>
             </div>

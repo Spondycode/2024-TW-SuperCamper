@@ -5,7 +5,7 @@
 {% endblock head_title %}
 {% block content %}
 
-    <div class="max-w-xl m-4 mx-auto card bg-sky-200">
+    <div class="max-w-xl p-4 m-4 mx-auto rounded-md bg-sky-200">
         <h1 class="mb-4 text-2xl font-semibold text-center">Sign up</h1>
         <p class="py-4">
             Already have an account? Then please <a class="p-1 text-white bg-blue-400 rounded-md hover:bg-blue-500" href="{{ login_url }}">sign in</a>.
@@ -22,7 +22,7 @@
             {% endslot %}
             {% slot actions %}
                 {% element button tags="prominent,signup" type="submit" %}
-                <p class="text-center text-white bg-blue-600 shadow-lg btn hover:bg-blue-700"> {% trans "Sign In" %} </p>
+                <p class="p-3 text-center text-white bg-blue-600 rounded-md shadow-lg hover:bg-blue-700"> {% trans "Sign In" %} </p>
                 {% endelement %}
             {% endslot %}
         {% endelement %}
