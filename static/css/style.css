@@ -2637,6 +2637,11 @@ input[name="remember"] {
     border-color: rgb(55 65 81 / var(--tw-border-opacity));
   }
 
+  .dark\:border-purple-200 {
+    --tw-border-opacity: 1;
+    border-color: rgb(233 213 255 / var(--tw-border-opacity));
+  }
+
   .dark\:bg-blue-900 {
     --tw-bg-opacity: 1;
     background-color: rgb(30 58 138 / var(--tw-bg-opacity));
@@ -2725,6 +2730,11 @@ input[name="remember"] {
   .dark\:text-yellow-50 {
     --tw-text-opacity: 1;
     color: rgb(254 252 232 / var(--tw-text-opacity));
+  }
+
+  .dark\:text-sky-100 {
+    --tw-text-opacity: 1;
+    color: rgb(224 242 254 / var(--tw-text-opacity));
   }
 
   .dark\:hover\:bg-gray-700:hover {
