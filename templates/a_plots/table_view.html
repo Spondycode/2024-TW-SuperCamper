@@ -6,11 +6,44 @@
 <h1 class="text-2xl font-semibold text-center">All the Plots</h1>
 
 
-{% for Plot in plots %}
-
-{{ plot }}
+<div class="p-4 mx-auto max-w-7xl">
+    <table class="p-2 mx-auto text-sm border-b-2 border-collapse table-auto lg:text-base">
+        <thead>
+            <tr>
+                <th>Plot Title</th>
+                <th>Owner</th>
+                <th>Type</th>
+                <th>Plot Price</th>
+                <th>Plot List Date</th>
+                <th>Plot Campsite</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+        {% for plot in plots %}
+<tbody class="border-b-2">
+    <tr>
+        <td class="p-2 cursor-pointer">
+            <a href="{% url 'show-plot' plot.id %}">
+                {{ plot.title }}
+            </a>
+        </td>
+        <td class="p-2 cursor-pointer">
+            <a href="{% url 'user-profile' plot.owner %}">
+                {{ plot.owner }}
+            </a>
+        </td>
+        <td class="p-2">{{ plot.categories }}</td>
+        <td class="p-2">{{ plot.price }}</td>
+        <td class="p-2">{{ plot.list_date }}</td>
+        <td class="p-2">{{ plot.campsite }}</td>
+        <td class="p-2">{{ plot.countries }}</td>
+    </tr>
+</tbody>
+    <!-- {{ plot.title }} - {{ plot.list_date }}<br> -->
     
-{% endfor %}
+    {% endfor %}
+</table>
+</div>
     
     
 {% endblock content %}

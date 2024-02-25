@@ -476,7 +476,7 @@ def delete_reply(request, pk):
 
 @login_required
 def plot_table_view(request):
-    plots = Plot.objects.all()
+    plots = Plot.objects.all().order_by("countries", "categories")
     context = {
         "plots": plots,
     }
