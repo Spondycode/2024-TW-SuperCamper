@@ -24,6 +24,7 @@ else:
 
 ALLOWED_HOSTS = [ 
                  'supercamper.onrender.com',
+                 'supercamper.app',
                  'localhost:8000',
                  '127.0.0.1',
                 ]
