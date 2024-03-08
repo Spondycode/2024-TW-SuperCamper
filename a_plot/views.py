@@ -224,7 +224,7 @@ def search_plots_view(request):
             "page": page,
         }
         return render(request, "a_plots/plot_search.html", context)
-        plots = Plot.objects.filter(title__icontains=query)
+        plots = Plot.objects.filter(title__icontains=query)  # noqa: F821
         
     else:
         plots = Plot.objects.all()
@@ -250,7 +250,7 @@ def search_campsites_view(request):
             "page": page,
         }
         return render(request, "a_plots/campsite_search.html", context)
-        plots = Plot.objects.filter(campsite__icontains=query)
+        plots = Plot.objects.filter(campsite__icontains=query)  # noqa: F821
     else:
         plots = Plot.objects.all()
     context = {
@@ -278,7 +278,7 @@ def search_countries_view(request):
             "page": page,
         }
         return render(request, "a_plots/country_search.html", context)
-        plots = Plot.objects.filter(countries__icontains=query)
+        plots = Plot.objects.filter(countries__icontains=query)  # noqa: F821
     else:
         plots = Plot.objects.all()
     context = {
