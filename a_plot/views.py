@@ -342,7 +342,7 @@ def wild_plots_view(request):
     if request.user.is_authenticated:
         plots = Plot.objects.filter(categories__icontains="Wild")  # Fetch plots with category "Wild"
         
-        paginator = Paginator(plots, 12)  # Show 12 plots per page
+        paginator = Paginator(plots, 12)  # Show 7 plots per page
         page = int(request.GET.get('page', 1))
         plots = paginator.page(page)
         context = {
@@ -476,13 +476,8 @@ def delete_reply(request, pk):
 
 @login_required
 def plot_table_view(request):
-    plots = Plot.objects.all().order_by("countries", "categories")
-    paginator = Paginator(plots,25)  # Show 12 plots per page
-    page = int(request.GET.get('page', 1))
-    plots = paginator.page(page)
-    
+    plots = Plot.objects.all()
     context = {
         "plots": plots,
-        "page": page,
     }
     return render(request, "a_plots/table_view.html", context)
