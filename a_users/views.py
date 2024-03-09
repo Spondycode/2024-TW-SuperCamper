@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import Http404
 # from django.contrib.auth.models import User
 from django.contrib.auth.models import User
+from allauth.account.utils import send_email_confirmation
 from django.urls import reverse
 from a_inbox.forms import InboxNewMessageForm
 from django.core.paginator import Paginator
@@ -76,7 +77,10 @@ def profile_edit_view(request):
         form = ProfileAddForm(request.POST, request.FILES, instance=request.user.profile)
         if form.is_valid():
             form.save()
-            return redirect("profile")
+            if request.user.emailaddress_set.get(primary=True).verified:
+                return redirect("profile")
+            else:
+                return redirect("profile-verify-email")
         
     if request.path == reverse("profile-onboarding"):
         template = 'a_users/profile_onboarding.html'
@@ -133,3 +137,8 @@ def profile_delete_confirm_view(request):
     else:
         messages.success(request, "You need to login first")
         return redirect("/login")
+
+
+def profile_verify_email(request):
+    send_email_confirmation(request, request.user)
+    return redirect("profile")
