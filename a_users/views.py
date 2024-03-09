@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 # from django.shortcuts import get_object_or_404
 from django.http import Http404
 from django.contrib.auth.models import User
-from allauth.account.utils import send_email_confirmation
+# from allauth.account.utils import send_email_confirmation
 from django.urls import reverse
 from a_inbox.forms import InboxNewMessageForm
 from django.core.paginator import Paginator
@@ -135,6 +135,6 @@ def profile_delete_confirm_view(request):
         return redirect("/login")
 
 
-def profile_verify_email(request):
-    send_email_confirmation(request, request.user)
-    return redirect("profile")
+# def profile_verify_email(request):
+#     send_email_confirmation(request, request.user)
+#     return redirect("profile")
