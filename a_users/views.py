@@ -76,11 +76,7 @@ def profile_edit_view(request):
         form = ProfileAddForm(request.POST, request.FILES, instance=request.user.profile)
         if form.is_valid():
             form.save()
-            
-            if request.user.emailaddress_set.get(primary=True).verified:
-                return redirect("profile")
-            else:
-                return redirect("profile") # redirect to the send email confirmation page - changed it from what it should be in tutorial Email Verifications & Notifications - Deployment with Django - Part 5 because it wasn't working
+            return redirect("profile")
         
     if request.path == reverse("profile-onboarding"):
         template = 'a_users/profile_onboarding.html'

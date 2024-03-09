@@ -31,15 +31,15 @@ def update_user(sender, instance, created, **kwargs):
             user.save()
             
 
-@receiver(post_save, sender=Profile)
-def update_account_email(sender, instance, created, **kwargs):
-    profile = instance
-    if not created:
-        try:
-            email_address = EmailAddress.objects.get_primary(profile.user)
-            if email_address.email != profile.email:
-                email_address.email = profile.email
-                email_address.verified = False
-                email_address.save()
-        except:
-            pass
+# @receiver(post_save, sender=Profile)
+# def update_account_email(sender, instance, created, **kwargs):
+#     profile = instance
+#     if not created:
+#         try:
+#             email_address = EmailAddress.objects.get_primary(profile.user)
+#             if email_address.email != profile.email:
+#                 email_address.email = profile.email
+#                 email_address.verified = False
+#                 email_address.save()
+#         except:
+#             pass
