@@ -6,7 +6,6 @@ from .forms import ProfileAddForm
 from django.contrib.auth.decorators import login_required
 # from django.shortcuts import get_object_or_404
 from django.http import Http404
-# from django.contrib.auth.models import User
 from django.contrib.auth.models import User
 from allauth.account.utils import send_email_confirmation
 from django.urls import reverse
@@ -77,10 +76,11 @@ def profile_edit_view(request):
         form = ProfileAddForm(request.POST, request.FILES, instance=request.user.profile)
         if form.is_valid():
             form.save()
+            
             if request.user.emailaddress_set.get(primary=True).verified:
                 return redirect("profile")
             else:
-                return redirect("profile-verify-email")
+                return redirect("profile")
         
     if request.path == reverse("profile-onboarding"):
         template = 'a_users/profile_onboarding.html'
