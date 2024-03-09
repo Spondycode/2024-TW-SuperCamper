@@ -3,7 +3,7 @@ from django.db.models.signals import post_save  # Import the post_save signal
 from django.contrib.auth.models import User  # Import the User model
 from .models import Profile
 from django.shortcuts import get_object_or_404  # Import the get_object_or_404 function
-from .models import Profile  # Import the Profile model
+from allauth.account.models import EmailAddress  # Import the EmailAddress model
 
 
 @receiver(post_save, sender=User)
@@ -30,7 +30,7 @@ def update_user(sender, instance, created, **kwargs):
             user.email = profile.email
             user.save()
             
-            
+
 @receiver(post_save, sender=Profile)
 def update_account_email(sender, instance, created, **kwargs):
     profile = instance
