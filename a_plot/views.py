@@ -476,8 +476,13 @@ def delete_reply(request, pk):
 
 @login_required
 def plot_table_view(request):
-    plots = Plot.objects.all()
+    plots = Plot.objects.all().order_by("countries", "categories")
+    paginator = Paginator(plots,25)  # Show 12 plots per page
+    page = int(request.GET.get('page', 1))
+    plots = paginator.page(page)
+    
     context = {
         "plots": plots,
+        "page": page,
     }
     return render(request, "a_plots/table_view.html", context)
